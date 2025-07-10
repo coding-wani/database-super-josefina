@@ -1,0 +1,27 @@
+[
+  {
+    "userId": "user-1",
+    "issueId": "550e8400-e29b-41d4-a716-446655440001",
+    "favoritedAt": "2025-07-01T10:30:00Z"
+  },
+  {
+    "userId": "user-2",
+    "issueId": "550e8400-e29b-41d4-a716-446655440001",
+    "favoritedAt": "2025-07-02T15:00:00Z"
+  },
+  {
+    "userId": "user-3",
+    "issueId": "550e8400-e29b-41d4-a716-446655440000",
+    "favoritedAt": "2025-06-05T09:00:00Z"
+  },
+  {
+    "userId": "user-4",
+    "issueId": "550e8400-e29b-41d4-a716-446655440003",
+    "favoritedAt": "2025-07-09T16:00:00Z"
+  },
+  {
+    "userId": "user-1",
+    "issueId": "550e8400-e29b-41d4-a716-446655440002",
+    "favoritedAt": "2025-06-20T11:00:00Z"
+  }
+]

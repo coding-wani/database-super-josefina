@@ -1,0 +1,38 @@
+[
+  {
+    "userId": "user-1",
+    "commentId": "comment-1",
+    "reactionId": "reaction-1",
+    "reactedAt": "2025-07-03T10:15:00Z"
+  },
+  {
+    "userId": "user-2",
+    "commentId": "comment-1",
+    "reactionId": "reaction-5",
+    "reactedAt": "2025-07-03T11:00:00Z"
+  },
+  {
+    "userId": "user-4",
+    "commentId": "comment-2",
+    "reactionId": "reaction-3",
+    "reactedAt": "2025-07-10T14:30:00Z"
+  },
+  {
+    "userId": "user-5",
+    "commentId": "comment-2",
+    "reactionId": "reaction-5",
+    "reactedAt": "2025-07-10T14:31:00Z"
+  },
+  {
+    "userId": "user-1",
+    "commentId": "comment-2",
+    "reactionId": "reaction-5",
+    "reactedAt": "2025-07-10T14:32:00Z"
+  },
+  {
+    "userId": "user-3",
+    "commentId": "comment-3",
+    "reactionId": "reaction-6",
+    "reactedAt": "2025-07-10T15:00:00Z"
+  }
+]

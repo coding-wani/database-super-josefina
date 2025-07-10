@@ -1,0 +1,22 @@
+[
+  {
+    "userId": "user-4",
+    "commentId": "comment-1",
+    "subscribedAt": "2025-07-03T10:00:00Z"
+  },
+  {
+    "userId": "user-5",
+    "commentId": "comment-1",
+    "subscribedAt": "2025-07-10T14:29:00Z"
+  },
+  {
+    "userId": "user-1",
+    "commentId": "comment-1",
+    "subscribedAt": "2025-07-03T10:30:00Z"
+  },
+  {
+    "userId": "user-2",
+    "commentId": "comment-3",
+    "subscribedAt": "2025-07-10T14:30:00Z"
+  }
+]

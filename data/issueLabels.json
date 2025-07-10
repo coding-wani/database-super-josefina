@@ -1,0 +1,22 @@
+[
+  {
+    "id": "label-1",
+    "name": "Bug",
+    "color": "#ef4444"
+  },
+  {
+    "id": "label-2",
+    "name": "Feature",
+    "color": "#8b5cf6"
+  },
+  {
+    "id": "label-3",
+    "name": "ideation",
+    "color": "#22c55e"
+  },
+  {
+    "id": "label-4",
+    "name": "Linear Test",
+    "color": "#3b82f6"
+  }
+]

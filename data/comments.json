@@ -1,0 +1,35 @@
+[
+  {
+    "id": "comment-1",
+    "authorId": "user-4",
+    "description": "test comment",
+    "parentIssueId": "550e8400-e29b-41d4-a716-446655440001",
+    "parentCommentId": null,
+    "threadOpen": true,
+    "commentUrl": "https://linear.app/team/issue/ISSUE-04#comment-1",
+    "createdAt": "2025-07-03T10:00:00Z",
+    "updatedAt": "2025-07-03T10:00:00Z"
+  },
+  {
+    "id": "comment-2",
+    "authorId": "user-5",
+    "description": "this is a comment on another comment, we call it a reply",
+    "parentIssueId": "550e8400-e29b-41d4-a716-446655440001",
+    "parentCommentId": "comment-1",
+    "threadOpen": true,
+    "commentUrl": "https://linear.app/team/issue/ISSUE-04#comment-2",
+    "createdAt": "2025-07-10T14:29:00Z",
+    "updatedAt": "2025-07-10T14:29:00Z"
+  },
+  {
+    "id": "comment-3",
+    "authorId": "user-5",
+    "description": "test\n\nhihi",
+    "parentIssueId": "550e8400-e29b-41d4-a716-446655440003",
+    "parentCommentId": null,
+    "threadOpen": false,
+    "commentUrl": "https://linear.app/team/issue/ISSUE-03#comment-3",
+    "createdAt": "2025-07-10T14:29:00Z",
+    "updatedAt": "2025-07-10T14:29:00Z"
+  }
+]

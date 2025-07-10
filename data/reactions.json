@@ -1,0 +1,42 @@
+[
+  {
+    "id": "reaction-1",
+    "emoji": "🥰",
+    "name": "heart_eyes"
+  },
+  {
+    "id": "reaction-2",
+    "emoji": "😊",
+    "name": "slightly_smiling_face"
+  },
+  {
+    "id": "reaction-3",
+    "emoji": "🤔",
+    "name": "thinking_face"
+  },
+  {
+    "id": "reaction-4",
+    "emoji": "🤐",
+    "name": "face_with_hand_over_mouth"
+  },
+  {
+    "id": "reaction-5",
+    "emoji": "👍",
+    "name": "thumbs_up"
+  },
+  {
+    "id": "reaction-6",
+    "emoji": "❤️",
+    "name": "heart"
+  },
+  {
+    "id": "reaction-7",
+    "emoji": "🎉",
+    "name": "party_popper"
+  },
+  {
+    "id": "reaction-8",
+    "emoji": "🚀",
+    "name": "rocket"
+  }
+]

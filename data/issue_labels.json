@@ -1,0 +1,22 @@
+[
+  {
+    "issueId": "550e8400-e29b-41d4-a716-446655440001",
+    "labelId": "label-1"
+  },
+  {
+    "issueId": "550e8400-e29b-41d4-a716-446655440001",
+    "labelId": "label-2"
+  },
+  {
+    "issueId": "550e8400-e29b-41d4-a716-446655440003",
+    "labelId": "label-3"
+  },
+  {
+    "issueId": "550e8400-e29b-41d4-a716-446655440000",
+    "labelId": "label-1"
+  },
+  {
+    "issueId": "550e8400-e29b-41d4-a716-446655440000",
+    "labelId": "label-4"
+  }
+]
