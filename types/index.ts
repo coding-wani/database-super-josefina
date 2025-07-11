@@ -4,3 +4,5 @@ export type { IssueLabel } from "./issueLabel";
 export type { Priority } from "./priority";
 export type { Status } from "./status";
 export type { Comment } from "./comment";
+export type { Reaction } from "./reaction";
+export type { Link } from "./link";

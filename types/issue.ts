@@ -2,6 +2,7 @@ import { Priority } from "./priority";
 import { Status } from "./status";
 import { IssueLabel } from "./issueLabel";
 import { User } from "./user";
+import { Link } from "./link";
 
 export interface Issue {
   id: string; // PostgreSQL UUID (internal)
@@ -16,6 +17,8 @@ export interface Issue {
   labels?: IssueLabel[]; // Array of labels (populated via junction table)
   subscribers?: User[]; // Array of subscribed users (populated via junction table)
   favoritedBy?: User[]; // Array of users who favorited this issue (populated via junction table)
+  links?: Link[]; // Array of links attached to this issue
+  relatedIssues?: Issue[]; // Array of related issues (populated via junction table)
   dueDate?: Date | null;
   assigneeId?: string | null; // Foreign key to User who is assigned
   createdAt: Date;

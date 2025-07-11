@@ -2,7 +2,7 @@
 
 ## Overview
 
-Created a comprehensive PostgreSQL database schema for a Linear.app clone focusing on the issue tracking functionality. The schema supports hierarchical issues, comments with replies, user interactions (reactions, subscriptions, favorites), and labeling system.
+Created a comprehensive PostgreSQL database schema for a Linear.app clone focusing on the issue tracking functionality. The schema supports hierarchical issues, comments with replies, user interactions (reactions, subscriptions, favorites), labeling system, external links, and related issues.
 
 ## Database Structure
 
@@ -44,41 +44,60 @@ Created a comprehensive PostgreSQL database schema for a Linear.app clone focusi
 - Fields: id, emoji (actual emoji), name (code like "heart_eyes")
 - Seeded with 12 common reactions
 
+#### 6. **links**
+
+- External links attached to issues for documentation/reference
+- Fields: id, issue_id, title, url, created_at, updated_at
+- Each issue can have multiple links
+
 ### Junction Tables (Many-to-Many Relationships)
 
-#### 6. **issue_label_relations**
+#### 7. **issue_label_relations**
 
 - Links issues to multiple labels
 - Fields: issue_id, label_id, created_at
 
-#### 7. **issue_subscriptions**
+#### 8. **issue_subscriptions**
 
 - Users subscribed to issue notifications
 - Fields: user_id, issue_id, subscribed_at
 
-#### 8. **comment_subscriptions**
+#### 9. **comment_subscriptions**
 
 - Users subscribed to comment thread notifications
 - Fields: user_id, comment_id, subscribed_at
 
-#### 9. **issue_favorites**
+#### 10. **issue_favorites**
 
 - Users' favorited issues
 - Fields: user_id, issue_id, favorited_at
 
-#### 10. **comment_reactions**
+#### 11. **comment_reactions**
 
 - Tracks which users added which reactions to comments
 - Fields: user_id, comment_id, reaction_id, reacted_at
 
+#### 12. **comment_issues**
+
+- Tracks issues created from comments
+- Fields: comment_id, issue_id, is_sub_issue, created_at
+
+#### 13. **issue_related_issues**
+
+- Bidirectional relationships between related issues
+- Fields: issue_id, related_issue_id, created_at
+- Constraint prevents self-relations
+
 ### Key Features Implemented
 
 1. **Hierarchical Issues**: Issues can have unlimited sub-issues
-2. **Comment Threading**: Comments support nested replies
-3. **Flexible Origin**: Issues can be created standalone, as sub-issues, or from comments
-4. **Rich Interactions**: Users can subscribe, favorite, and react to content
-5. **Markdown Support**: Descriptions and comments support full markdown
-6. **Audit Trail**: All tables include created_at and updated_at with automatic triggers
+2. **Related Issues**: Issues can be linked to other related issues (different from parent-child)
+3. **External Links**: Issues can have multiple reference links with titles
+4. **Comment Threading**: Comments support nested replies
+5. **Flexible Origin**: Issues can be created standalone, as sub-issues, or from comments
+6. **Rich Interactions**: Users can subscribe, favorite, and react to content
+7. **Markdown Support**: Descriptions and comments support full markdown
+8. **Audit Trail**: All tables include created_at and updated_at with automatic triggers
 
 ### Indexing Strategy
 
@@ -91,7 +110,7 @@ Created a comprehensive PostgreSQL database schema for a Linear.app clone focusi
 
 Created corresponding TypeScript interfaces for type-safe development:
 
-- User, Issue, Comment, IssueLabel, Reaction
+- User, Issue, Comment, IssueLabel, Reaction, Link
 - Type unions for Priority and Status
 - Proper nullable fields and optional arrays
 
@@ -102,6 +121,8 @@ Generated realistic mock data covering:
 - 5 users with different roles
 - 12 issues including sub-issues and comment-originated issues
 - Comments with replies
+- 6 external links across various issues
+- Related issue connections
 - Full relationship data for subscriptions, favorites, labels, and reactions
 
 ## Usage Notes
@@ -112,17 +133,21 @@ Generated realistic mock data covering:
 
    - Users use string IDs (for potential OAuth integration)
    - Issues use UUIDs with separate public_id for user-facing display
-   - Comments and other tables use string IDs
+   - Comments, Links, and other tables use string IDs
 
-3. **Performance**: Comprehensive indexing ensures efficient queries for:
+3. **Related Issues**: The relationship is bidirectional and stored twice in the junction table for easier querying from either direction.
+
+4. **Performance**: Comprehensive indexing ensures efficient queries for:
 
    - Finding all subscribers to an issue/comment
    - Listing user's subscriptions/favorites
    - Filtering by status/priority
    - Chronological sorting
+   - Related issue navigation
 
-4. **Future Considerations**: The schema is extensible for features like:
+5. **Future Considerations**: The schema is extensible for features like:
    - Issue templates
    - Custom fields
    - Time tracking
    - Sprint/milestone associations
+   - Link previews/metadata

@@ -1,3 +1,5 @@
+-- db/schema/011_create_indexes.sql
+
 -- Issues indexes
 CREATE INDEX IF NOT EXISTS idx_issues_creator ON issues(creator_id);
 CREATE INDEX IF NOT EXISTS idx_issues_assignee ON issues(assignee_id);
@@ -34,3 +36,15 @@ CREATE INDEX IF NOT EXISTS idx_comment_reactions_reaction ON comment_reactions(r
 -- Issue label relations indexes
 CREATE INDEX IF NOT EXISTS idx_issue_label_relations_issue ON issue_label_relations(issue_id);
 CREATE INDEX IF NOT EXISTS idx_issue_label_relations_label ON issue_label_relations(label_id);
+
+-- Comment issues indexes
+CREATE INDEX IF NOT EXISTS idx_comment_issues_comment ON comment_issues(comment_id);
+CREATE INDEX IF NOT EXISTS idx_comment_issues_issue ON comment_issues(issue_id);
+
+-- Links indexes
+CREATE INDEX IF NOT EXISTS idx_links_issue ON links(issue_id);
+CREATE INDEX IF NOT EXISTS idx_links_created_at ON links(created_at DESC);
+
+-- Related issues indexes
+CREATE INDEX IF NOT EXISTS idx_issue_related_issues_issue ON issue_related_issues(issue_id);
+CREATE INDEX IF NOT EXISTS idx_issue_related_issues_related ON issue_related_issues(related_issue_id);

@@ -13,4 +13,6 @@
 \i schema/010_create_comment_reactions.sql
 \i schema/011_create_indexes.sql
 \i schema/012_create_comment_issues.sql
+\i schema/013_create_links.sql
+\i schema/014_create_issue_related_issues.sql
 \i seeds/001_initial_reactions.sql
