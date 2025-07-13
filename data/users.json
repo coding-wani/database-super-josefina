@@ -7,7 +7,7 @@
     "firstName": "John",
     "lastName": "Doe",
     "isOnline": true,
-    "roles": ["developer", "admin"],
+    "currentWorkspaceId": "00000000-0000-0000-0000-000000000001",
     "createdAt": "2024-01-01T10:00:00Z",
     "updatedAt": "2025-07-10T10:00:00Z"
   },
@@ -19,7 +19,7 @@
     "firstName": "Jane",
     "lastName": "Doe",
     "isOnline": false,
-    "roles": ["developer"],
+    "currentWorkspaceId": "00000000-0000-0000-0000-000000000001",
     "createdAt": "2024-02-01T10:00:00Z",
     "updatedAt": "2025-07-09T10:00:00Z"
   },
@@ -31,7 +31,7 @@
     "firstName": "Alex",
     "lastName": "Smith",
     "isOnline": true,
-    "roles": ["designer"],
+    "currentWorkspaceId": "00000000-0000-0000-0000-000000000002",
     "createdAt": "2024-03-01T10:00:00Z",
     "updatedAt": "2025-07-08T10:00:00Z"
   },
@@ -43,19 +43,19 @@
     "firstName": "Gigi",
     "lastName": null,
     "isOnline": true,
-    "roles": ["developer"],
+    "currentWorkspaceId": "00000000-0000-0000-0000-000000000001",
     "createdAt": "2024-04-01T10:00:00Z",
     "updatedAt": "2025-07-03T10:00:00Z"
   },
   {
     "id": "user-5",
-    "username": "guillaumeclimentygarcia",
-    "email": "guillaume@example.com",
-    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=guillaumeclimentygarcia",
-    "firstName": "Guillaume",
-    "lastName": "Climent y Garcia",
+    "username": "juliandoe",
+    "email": "julian.doe@example.com",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=juliandoe",
+    "firstName": "Julian",
+    "lastName": "Doe",
     "isOnline": false,
-    "roles": ["developer", "reviewer"],
+    "currentWorkspaceId": "00000000-0000-0000-0000-000000000001",
     "createdAt": "2024-05-01T10:00:00Z",
     "updatedAt": "2025-07-10T14:29:00Z"
   }

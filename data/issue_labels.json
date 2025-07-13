@@ -1,22 +1,34 @@
 [
   {
-    "issueId": "550e8400-e29b-41d4-a716-446655440001",
-    "labelId": "label-1"
+    "id": "label-1",
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
+    "teamId": null,
+    "name": "Bug",
+    "color": "#ef4444",
+    "description": "Something isn't working"
   },
   {
-    "issueId": "550e8400-e29b-41d4-a716-446655440001",
-    "labelId": "label-2"
+    "id": "label-2",
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
+    "teamId": null,
+    "name": "Feature",
+    "color": "#8b5cf6",
+    "description": "New feature or request"
   },
   {
-    "issueId": "550e8400-e29b-41d4-a716-446655440003",
-    "labelId": "label-3"
+    "id": "label-3",
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
+    "teamId": "11111111-1111-1111-1111-111111111112",
+    "name": "ideation",
+    "color": "#22c55e",
+    "description": "Design team ideation phase"
   },
   {
-    "issueId": "550e8400-e29b-41d4-a716-446655440000",
-    "labelId": "label-1"
-  },
-  {
-    "issueId": "550e8400-e29b-41d4-a716-446655440000",
-    "labelId": "label-4"
+    "id": "label-4",
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
+    "teamId": null,
+    "name": "Linear Test",
+    "color": "#3b82f6",
+    "description": "Testing Linear features"
   }
 ]

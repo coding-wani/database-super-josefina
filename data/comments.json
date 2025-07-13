@@ -1,6 +1,8 @@
 [
   {
     "id": "comment-1",
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
+    "teamId": "11111111-1111-1111-1111-111111111111",
     "authorId": "user-4",
     "description": "test comment",
     "parentIssueId": "550e8400-e29b-41d4-a716-446655440001",
@@ -12,6 +14,8 @@
   },
   {
     "id": "comment-2",
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
+    "teamId": "11111111-1111-1111-1111-111111111111",
     "authorId": "user-5",
     "description": "this is a comment on another comment, we call it a reply",
     "parentIssueId": "550e8400-e29b-41d4-a716-446655440001",
@@ -23,6 +27,8 @@
   },
   {
     "id": "comment-3",
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
+    "teamId": "11111111-1111-1111-1111-111111111112",
     "authorId": "user-5",
     "description": "test\n\nhihi",
     "parentIssueId": "550e8400-e29b-41d4-a716-446655440003",

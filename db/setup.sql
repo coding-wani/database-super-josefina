@@ -15,4 +15,10 @@
 \i schema/012_create_comment_issues.sql
 \i schema/013_create_links.sql
 \i schema/014_create_issue_related_issues.sql
+\i schema/015_create_workspaces.sql
+\i schema/016_create_teams.sql
+\i schema/017_create_projects.sql
+\i schema/018_create_workspace_memberships.sql
+\i schema/019_create_team_memberships.sql
+\i schema/020_alter_existing_tables_for_multi_tenant.sql
 \i seeds/001_initial_reactions.sql

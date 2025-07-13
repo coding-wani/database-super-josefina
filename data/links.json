@@ -1,6 +1,7 @@
 [
   {
     "id": "link-1",
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
     "issueId": "550e8400-e29b-41d4-a716-446655440001",
     "title": "British Newspaper Archive",
     "url": "https://www.britishnewspaperarchive.co.uk",
@@ -9,6 +10,7 @@
   },
   {
     "id": "link-2",
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
     "issueId": "550e8400-e29b-41d4-a716-446655440001",
     "title": "The Telegraph",
     "url": "https://www.telegraph.co.uk",
@@ -17,6 +19,7 @@
   },
   {
     "id": "link-3",
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
     "issueId": "550e8400-e29b-41d4-a716-446655440001",
     "title": "The New York Times",
     "url": "https://www.nytimes.com",
@@ -25,6 +28,7 @@
   },
   {
     "id": "link-4",
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
     "issueId": "550e8400-e29b-41d4-a716-446655440003",
     "title": "The Atlantic",
     "url": "https://www.theatlantic.com",
@@ -33,6 +37,7 @@
   },
   {
     "id": "link-5",
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
     "issueId": "550e8400-e29b-41d4-a716-446655440002",
     "title": "The Guardian",
     "url": "https://www.theguardian.com",
@@ -41,6 +46,7 @@
   },
   {
     "id": "link-6",
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
     "issueId": "550e8400-e29b-41d4-a716-446655440002",
     "title": "The Washington Post",
     "url": "https://www.washingtonpost.com",
