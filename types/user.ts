@@ -6,7 +6,7 @@ export interface User {
   firstName?: string;
   lastName?: string;
   isOnline?: boolean;
-  roles?: string[];
+  currentWorkspaceId?: string; // Last active workspace
   createdAt: Date;
   updatedAt: Date;
 }

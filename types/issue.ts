@@ -7,6 +7,12 @@ import { Link } from "./link";
 export interface Issue {
   id: string; // PostgreSQL UUID (internal)
   publicId: string; // User-facing ID like "ISSUE-09" or "BEST-40"
+
+  // Multi-tenant fields
+  workspaceId: string; // Foreign key to Workspace (always required)
+  teamId?: string; // Foreign key to Team (optional - null if workspace/project-level)
+  projectId?: string; // Foreign key to Project (optional)
+
   priority: Priority;
   status: Status;
   title: string;
