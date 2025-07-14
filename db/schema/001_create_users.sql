@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS users (
     first_name VARCHAR(100),
     last_name VARCHAR(100),
     is_online BOOLEAN DEFAULT false,
-    current_workspace_id UUID, -- Will add FK constraint after workspaces table is created
+    -- Remove this line, will be added later:
+    -- current_workspace_id UUID,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
