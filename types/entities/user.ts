@@ -7,6 +7,7 @@ export interface User {
   lastName?: string;
   isOnline?: boolean;
   currentWorkspaceId?: string; // Last active workspace
+  roles?: string[]; // Array of user roles (PostgreSQL TEXT[] array)
   createdAt: Date;
   updatedAt: Date;
 }

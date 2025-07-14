@@ -1,4 +1,4 @@
-import { WorkspaceRole } from "./workspaceRole";
+import { WorkspaceRole } from "../enums/workspaceRole";
 
 export interface WorkspaceMembership {
   id: string; // UUID

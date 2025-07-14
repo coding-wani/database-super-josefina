@@ -1,4 +1,4 @@
-import { TeamRole } from "./teamRole";
+import { TeamRole } from "../enums/teamRole";
 
 export interface TeamMembership {
   id: string; // UUID

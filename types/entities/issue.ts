@@ -1,5 +1,5 @@
-import { Priority } from "./priority";
-import { Status } from "./status";
+import { Priority } from "../enums/priority";
+import { Status } from "../enums/status";
 import { IssueLabel } from "./issueLabel";
 import { User } from "./user";
 import { Link } from "./link";
