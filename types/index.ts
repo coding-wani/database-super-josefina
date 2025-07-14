@@ -1,16 +1,26 @@
-export type { Issue } from "./issue";
-export type { User } from "./user";
-export type { IssueLabel } from "./issueLabel";
-export type { Priority } from "./priority";
-export type { Status } from "./status";
-export type { Comment } from "./comment";
-export type { Reaction } from "./reaction";
-export type { Link } from "./link";
-export type { Workspace } from "./workspace";
-export type { Team } from "./team";
-export type { Project } from "./project";
-export type { ProjectStatus } from "./projectStatus";
-export type { WorkspaceMembership } from "./workspaceMembership";
-export type { WorkspaceRole } from "./workspaceRole";
-export type { TeamMembership } from "./teamMembership";
-export type { TeamRole } from "./teamRole";
+// Entities
+export type { Comment } from "./entities/comment";
+export type { Issue } from "./entities/issue";
+export type { IssueLabel } from "./entities/issueLabel";
+export type { Link } from "./entities/link";
+export type { Project } from "./entities/project";
+export type { Reaction } from "./entities/reaction";
+export type { Team } from "./entities/team";
+export type { User } from "./entities/user";
+export type { Workspace } from "./entities/workspace";
+
+// Enums
+export type { Priority } from "./enums/priority";
+export type { ProjectStatus } from "./enums/projectStatus";
+export type { Status } from "./enums/status";
+export type { TeamRole } from "./enums/teamRole";
+export type { WorkspaceRole } from "./enums/workspaceRole";
+
+// Relationships
+export type { TeamMembership } from "./relationships/teamMembership";
+export type { WorkspaceMembership } from "./relationships/workspaceMembership";
+
+// API Response Types (if you want to export them)
+export type { UserDashboardResponse } from "./api/userDashboardResponse";
+export type { WorkspaceMembershipWithDetails } from "./api/workspaceMembershipWithDetails";
+export type { TeamMembershipWithDetails } from "./api/teamMembershipWithDetails";
