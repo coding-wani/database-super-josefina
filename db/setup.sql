@@ -20,4 +20,5 @@
 \i schema/017_create_issue_related_issues.sql
 \i schema/018_create_workspace_memberships.sql
 \i schema/019_create_team_memberships.sql
+\i schema/020_enable_rls.sql
 \i seeds/001_initial_reactions.sql
