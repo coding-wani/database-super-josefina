@@ -1,5 +1,7 @@
 CREATE TABLE IF NOT EXISTS comments (
     id VARCHAR(50) PRIMARY KEY,
+    workspace_id UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+    team_id UUID REFERENCES teams(id) ON DELETE SET NULL,
     author_id VARCHAR(50) NOT NULL REFERENCES users(id),
     description TEXT NOT NULL,
     parent_issue_id UUID NOT NULL REFERENCES issues(id) ON DELETE CASCADE,
@@ -15,6 +17,9 @@ ALTER TABLE issues
     ADD CONSTRAINT fk_issues_parent_comment 
     FOREIGN KEY (parent_comment_id) 
     REFERENCES comments(id);
+
+CREATE INDEX idx_comments_workspace ON comments(workspace_id);
+CREATE INDEX idx_comments_team ON comments(team_id);
 
 CREATE TRIGGER update_comments_updated_at BEFORE UPDATE
     ON comments FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
