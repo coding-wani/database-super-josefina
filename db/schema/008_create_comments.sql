@@ -1,11 +1,11 @@
 CREATE TABLE IF NOT EXISTS comments (
-    id VARCHAR(50) PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),  -- Changed to UUID
     workspace_id UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
     team_id UUID REFERENCES teams(id) ON DELETE SET NULL,
     author_id VARCHAR(50) NOT NULL REFERENCES users(id),
     description TEXT NOT NULL,
     parent_issue_id UUID NOT NULL REFERENCES issues(id) ON DELETE CASCADE,
-    parent_comment_id VARCHAR(50) REFERENCES comments(id),
+    parent_comment_id UUID REFERENCES comments(id),  -- Changed to UUID
     thread_open BOOLEAN DEFAULT true,
     comment_url VARCHAR(500),
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),

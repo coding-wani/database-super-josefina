@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS links (
-    id VARCHAR(50) PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),  -- Changed to UUID
     workspace_id UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
     issue_id UUID NOT NULL REFERENCES issues(id) ON DELETE CASCADE,
     title VARCHAR(500) NOT NULL,

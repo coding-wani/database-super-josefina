@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS issues (
     description TEXT,
     creator_id VARCHAR(50) NOT NULL REFERENCES users(id),
     parent_issue_id UUID REFERENCES issues(id),
-    parent_comment_id VARCHAR(50), -- FK will be added after comments table
+    parent_comment_id UUID, -- Changed to UUID, FK will be added after comments table
     due_date TIMESTAMP,
     assignee_id VARCHAR(50) REFERENCES users(id),
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),

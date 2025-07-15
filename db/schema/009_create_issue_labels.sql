@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS issue_labels (
-    id VARCHAR(50) PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),  -- Changed to UUID
     workspace_id UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
     team_id UUID REFERENCES teams(id) ON DELETE SET NULL,
     name VARCHAR(100) NOT NULL,
