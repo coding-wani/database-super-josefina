@@ -1,6 +1,6 @@
 import { User } from "./user";
-import { WorkspaceMembership } from "./workspaceMembership";
-import { TeamMembership } from "./teamMembership";
+import { WorkspaceMembership } from "../relationships/workspaceMembership";
+import { TeamMembership } from "../relationships/teamMembership";
 
 // types/userWithMemberships.ts - Extended user model for dashboard/app
 export interface UserWithMemberships extends User {

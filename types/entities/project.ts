@@ -1,5 +1,6 @@
-import { ProjectStatus } from "./projectStatus";
-import { Priority } from "./priority";
+import { ProjectStatus } from "../enums/projectStatus";
+import { Priority } from "../enums/priority";
+import { Milestone } from "./milestone";
 
 export interface Project {
   id: string; // UUID (internal)
@@ -14,6 +15,10 @@ export interface Project {
   leadId?: string; // Foreign key to User who leads the project
   startDate?: Date;
   targetDate?: Date;
+
+  // Related data (populated via joins)
+  milestones?: Milestone[]; // Array of project milestones
+
   createdAt: Date;
   updatedAt: Date;
 }

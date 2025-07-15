@@ -1,4 +1,4 @@
--- db/schema/011_create_indexes.sql
+-- db/schema/015_create_indexes.sql
 
 -- Issues indexes
 CREATE INDEX IF NOT EXISTS idx_issues_creator ON issues(creator_id);
@@ -8,6 +8,12 @@ CREATE INDEX IF NOT EXISTS idx_issues_parent_comment ON issues(parent_comment_id
 CREATE INDEX IF NOT EXISTS idx_issues_status ON issues(status);
 CREATE INDEX IF NOT EXISTS idx_issues_priority ON issues(priority);
 CREATE INDEX IF NOT EXISTS idx_issues_created_at ON issues(created_at DESC);
+
+-- ADD THESE NEW MILESTONE-RELATED INDEXES:
+-- Milestone indexes
+CREATE INDEX IF NOT EXISTS idx_issues_milestone ON issues(milestone_id);
+CREATE INDEX IF NOT EXISTS idx_issues_status_milestone ON issues(milestone_id, status);  -- For counting by status
+CREATE INDEX IF NOT EXISTS idx_milestones_public_id ON milestones(public_id);
 
 -- Comments indexes
 CREATE INDEX IF NOT EXISTS idx_comments_author ON comments(author_id);

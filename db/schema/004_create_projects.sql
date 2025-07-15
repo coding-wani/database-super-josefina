@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS projects (
     lead_id VARCHAR(50) REFERENCES users(id),
     start_date DATE,
     target_date DATE,
+    -- Add milestone counter for generating public IDs
+    next_milestone_number INTEGER NOT NULL DEFAULT 1,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
     

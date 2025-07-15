@@ -6,6 +6,7 @@ ALTER TABLE issues ENABLE ROW LEVEL SECURITY;
 ALTER TABLE comments ENABLE ROW LEVEL SECURITY;
 ALTER TABLE workspace_memberships ENABLE ROW LEVEL SECURITY;
 ALTER TABLE team_memberships ENABLE ROW LEVEL SECURITY;
+ALTER TABLE milestones ENABLE ROW LEVEL SECURITY;
 
 -- Workspace access policy
 CREATE POLICY workspace_access ON workspaces
@@ -71,6 +72,32 @@ CREATE POLICY issue_access ON issues
         SELECT team_id 
         FROM team_memberships 
         WHERE user_id = current_setting('app.current_user')::text
+      )
+    )
+  );
+
+-- ADD THIS NEW MILESTONE POLICY:
+-- Milestone access policy
+-- Milestones inherit access from their parent project
+CREATE POLICY milestone_access ON milestones
+  FOR ALL
+  USING (
+    project_id IN (
+      SELECT p.id
+      FROM projects p
+      WHERE p.workspace_id IN (
+        SELECT workspace_id 
+        FROM workspace_memberships 
+        WHERE user_id = current_setting('app.current_user')::text
+      )
+      AND (
+        p.team_id IS NULL
+        OR
+        p.team_id IN (
+          SELECT team_id 
+          FROM team_memberships 
+          WHERE user_id = current_setting('app.current_user')::text
+        )
       )
     )
   );

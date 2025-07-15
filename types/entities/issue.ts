@@ -12,6 +12,7 @@ export interface Issue {
   workspaceId: string; // Foreign key to Workspace (always required)
   teamId?: string; // Foreign key to Team (optional - null if workspace/project-level)
   projectId?: string; // Foreign key to Project (optional)
+  milestoneId?: string; // Foreign key to Milestone (optional - only for project issues)
 
   priority: Priority;
   status: Status;

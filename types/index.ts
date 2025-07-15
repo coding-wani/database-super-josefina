@@ -3,6 +3,7 @@ export type { Comment } from "./entities/comment";
 export type { Issue } from "./entities/issue";
 export type { IssueLabel } from "./entities/issueLabel";
 export type { Link } from "./entities/link";
+export type { Milestone } from "./entities/milestone";
 export type { Project } from "./entities/project";
 export type { Reaction } from "./entities/reaction";
 export type { Team } from "./entities/team";
