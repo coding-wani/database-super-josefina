@@ -6,6 +6,7 @@ This document outlines all critical inconsistencies found between the TypeScript
 
 - **6 Critical ID Type Mismatches** - UUID vs VARCHAR(50) inconsistencies
 - **1 Missing Database Column** - User roles field not implemented in SQL
+- **2 Empty Files Created** - UserRole entity and SQL table files exist but are empty
 - **Multiple Foreign Key Reference Issues** - Due to ID type mismatches
 
 ## 🔴 Critical Issues
@@ -113,18 +114,20 @@ CREATE TABLE IF NOT EXISTS comments (
 
 - TypeScript defines `User.roles` as `string[]` (PostgreSQL TEXT[] array)
 - SQL has no `roles` column in the users table
+- **Note**: A user can have multiple roles simultaneously for different privilege levels
 
 **Impact**:
 
 - Application will fail when trying to access user roles
 - Role-based functionality will break
+- Multi-role privilege system will not work
 
 **TypeScript Definition**:
 
 ```typescript
 export interface User {
   // ... other fields
-  roles?: string[]; // Array of user roles (PostgreSQL TEXT[] array)
+  roles?: string[]; // Array of user roles (PostgreSQL TEXT[] array) - Multiple roles allowed
   // ... other fields
 }
 ```
@@ -144,7 +147,7 @@ CREATE TABLE IF NOT EXISTS users (
 ```sql
 CREATE TABLE IF NOT EXISTS users (
     -- ... other fields
-    roles TEXT[] DEFAULT '{}',
+    roles TEXT[] DEFAULT '{}', -- Allows multiple roles per user
     -- ... other fields
 );
 ```
@@ -311,6 +314,34 @@ CREATE TABLE IF NOT EXISTS links (
 
 ---
 
+### 7. Empty UserRole Files
+
+**Location**:
+
+- TypeScript: `types/entities/userRole.ts` (empty file)
+- SQL: `db/schema/001_create_user_roles.sql` (empty file)
+
+**Issue**:
+
+- Both files exist but are completely empty
+- No UserRole entity type defined in TypeScript
+- No user_roles table defined in SQL
+- This suggests a planned user role management system that hasn't been implemented
+
+**Impact**:
+
+- No user role management functionality
+- Cannot define custom roles beyond the basic enum types
+- Missing flexibility for role-based access control
+
+**Expected Implementation**:
+
+- TypeScript should define a UserRole interface with fields like id, name, description, permissions, etc.
+- SQL should create a user_roles table with appropriate columns
+- This would allow for dynamic role creation and management
+
+---
+
 ## ✅ Consistent Areas
 
 The following areas are correctly aligned between TypeScript and SQL:
@@ -392,6 +423,7 @@ When fixing these inconsistencies:
 
 ### SQL Schema Files:
 
+- `db/schema/001_create_user_roles.sql` (currently empty - needs implementation)
 - `db/schema/002_create_users.sql`
 - `db/schema/007_create_comments.sql`
 - `db/schema/008_create_issue_labels.sql`
@@ -400,6 +432,7 @@ When fixing these inconsistencies:
 
 ### TypeScript Files (if choosing Option 2):
 
+- `types/entities/userRole.ts` (currently empty - needs implementation)
 - `types/entities/user.ts`
 - `types/entities/comment.ts`
 - `types/entities/reaction.ts`
