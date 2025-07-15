@@ -1,5 +1,5 @@
 export interface User {
-  id: string;
+  id: string; // VARCHAR(50) for OAuth compatibility - NOT UUID
   username: string;
   email?: string;
   avatar: string;
