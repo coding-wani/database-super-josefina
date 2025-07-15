@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS comment_issues (
-    comment_id VARCHAR(50) REFERENCES comments(id) ON DELETE CASCADE,
+    comment_id UUID REFERENCES comments(id) ON DELETE CASCADE,
     issue_id UUID REFERENCES issues(id) ON DELETE CASCADE,
     is_sub_issue BOOLEAN DEFAULT false,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
