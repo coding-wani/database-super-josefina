@@ -4,6 +4,7 @@ export interface Link {
   issueId: string; // Foreign key to Issue.id
   title: string;
   url: string;
+  description?: string; // Optional description from meta tags or user input
   createdAt: Date;
   updatedAt: Date;
 }

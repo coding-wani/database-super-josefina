@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS links (
     issue_id UUID NOT NULL REFERENCES issues(id) ON DELETE CASCADE,
     title VARCHAR(500) NOT NULL,
     url TEXT NOT NULL,
+    description TEXT,  -- Optional description from meta tags or user input
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
