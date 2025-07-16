@@ -1,6 +1,6 @@
 [
   {
-    "id": "comment-1",
+    "id": "550e8400-e29b-41d4-a716-446655440100",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "teamId": "11111111-1111-1111-1111-111111111111",
     "authorId": "user-4",
@@ -13,20 +13,20 @@
     "updatedAt": "2025-07-03T10:00:00Z"
   },
   {
-    "id": "comment-2",
+    "id": "550e8400-e29b-41d4-a716-446655440101",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "teamId": "11111111-1111-1111-1111-111111111111",
     "authorId": "user-5",
     "description": "this is a comment on another comment, we call it a reply",
     "parentIssueId": "550e8400-e29b-41d4-a716-446655440001",
-    "parentCommentId": "comment-1",
+    "parentCommentId": "550e8400-e29b-41d4-a716-446655440100",
     "threadOpen": true,
     "commentUrl": "https://linear.app/team/issue/ISSUE-04#comment-2",
     "createdAt": "2025-07-10T14:29:00Z",
     "updatedAt": "2025-07-10T14:29:00Z"
   },
   {
-    "id": "comment-3",
+    "id": "550e8400-e29b-41d4-a716-446655440102",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "teamId": "11111111-1111-1111-1111-111111111112",
     "authorId": "user-5",

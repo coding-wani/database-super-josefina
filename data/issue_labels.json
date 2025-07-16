@@ -1,6 +1,6 @@
 [
   {
-    "id": "label-1",
+    "id": "550e8400-e29b-41d4-a716-446655440300",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "teamId": null,
     "name": "Bug",
@@ -8,7 +8,7 @@
     "description": "Something isn't working"
   },
   {
-    "id": "label-2",
+    "id": "550e8400-e29b-41d4-a716-446655440301",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "teamId": null,
     "name": "Feature",
@@ -16,7 +16,7 @@
     "description": "New feature or request"
   },
   {
-    "id": "label-3",
+    "id": "550e8400-e29b-41d4-a716-446655440302",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "teamId": "11111111-1111-1111-1111-111111111112",
     "name": "ideation",
@@ -24,7 +24,7 @@
     "description": "Design team ideation phase"
   },
   {
-    "id": "label-4",
+    "id": "550e8400-e29b-41d4-a716-446655440303",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "teamId": null,
     "name": "Linear Test",

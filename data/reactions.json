@@ -1,42 +1,62 @@
 [
   {
-    "id": "reaction-1",
+    "id": "550e8400-e29b-41d4-a716-446655440200",
     "emoji": "🥰",
     "name": "heart_eyes"
   },
   {
-    "id": "reaction-2",
+    "id": "550e8400-e29b-41d4-a716-446655440201",
     "emoji": "😊",
     "name": "slightly_smiling_face"
   },
   {
-    "id": "reaction-3",
+    "id": "550e8400-e29b-41d4-a716-446655440202",
     "emoji": "🤔",
     "name": "thinking_face"
   },
   {
-    "id": "reaction-4",
+    "id": "550e8400-e29b-41d4-a716-446655440203",
     "emoji": "🤐",
     "name": "face_with_hand_over_mouth"
   },
   {
-    "id": "reaction-5",
+    "id": "550e8400-e29b-41d4-a716-446655440204",
     "emoji": "👍",
     "name": "thumbs_up"
   },
   {
-    "id": "reaction-6",
+    "id": "550e8400-e29b-41d4-a716-446655440205",
     "emoji": "❤️",
     "name": "heart"
   },
   {
-    "id": "reaction-7",
+    "id": "550e8400-e29b-41d4-a716-446655440206",
     "emoji": "🎉",
     "name": "party_popper"
   },
   {
-    "id": "reaction-8",
+    "id": "550e8400-e29b-41d4-a716-446655440207",
     "emoji": "🚀",
     "name": "rocket"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440208",
+    "emoji": "👎",
+    "name": "thumbs_down"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440209",
+    "emoji": "😄",
+    "name": "smile"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440210",
+    "emoji": "😕",
+    "name": "confused"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440211",
+    "emoji": "👀",
+    "name": "eyes"
   }
 ]

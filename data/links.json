@@ -1,55 +1,61 @@
 [
   {
-    "id": "link-1",
+    "id": "550e8400-e29b-41d4-a716-446655440400",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "issueId": "550e8400-e29b-41d4-a716-446655440001",
     "title": "British Newspaper Archive",
     "url": "https://www.britishnewspaperarchive.co.uk",
+    "description": "The British Newspaper Archive is an online searchable database of historical newspapers from the British Library's collection",
     "createdAt": "2025-07-02T11:00:00Z",
     "updatedAt": "2025-07-02T11:00:00Z"
   },
   {
-    "id": "link-2",
+    "id": "550e8400-e29b-41d4-a716-446655440401",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "issueId": "550e8400-e29b-41d4-a716-446655440001",
     "title": "The Telegraph",
     "url": "https://www.telegraph.co.uk",
+    "description": "The latest UK and world news, business, sport and lifestyle from The Telegraph",
     "createdAt": "2025-07-02T11:30:00Z",
     "updatedAt": "2025-07-02T11:30:00Z"
   },
   {
-    "id": "link-3",
+    "id": "550e8400-e29b-41d4-a716-446655440402",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "issueId": "550e8400-e29b-41d4-a716-446655440001",
     "title": "The New York Times",
     "url": "https://www.nytimes.com",
+    "description": "Live news, investigations, opinion, photos and video by the journalists of The New York Times",
     "createdAt": "2025-07-02T12:00:00Z",
     "updatedAt": "2025-07-02T12:00:00Z"
   },
   {
-    "id": "link-4",
+    "id": "550e8400-e29b-41d4-a716-446655440403",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "issueId": "550e8400-e29b-41d4-a716-446655440003",
     "title": "The Atlantic",
     "url": "https://www.theatlantic.com",
+    "description": null,
     "createdAt": "2025-06-29T09:00:00Z",
     "updatedAt": "2025-06-29T09:00:00Z"
   },
   {
-    "id": "link-5",
+    "id": "550e8400-e29b-41d4-a716-446655440404",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "issueId": "550e8400-e29b-41d4-a716-446655440002",
     "title": "The Guardian",
     "url": "https://www.theguardian.com",
+    "description": "Latest news, sport, business, comment, analysis and reviews from the Guardian",
     "createdAt": "2025-06-16T10:00:00Z",
     "updatedAt": "2025-06-16T10:00:00Z"
   },
   {
-    "id": "link-6",
+    "id": "550e8400-e29b-41d4-a716-446655440405",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "issueId": "550e8400-e29b-41d4-a716-446655440002",
     "title": "The Washington Post",
     "url": "https://www.washingtonpost.com",
+    "description": "Breaking news and analysis on politics, business, world national news, entertainment more",
     "createdAt": "2025-06-16T10:30:00Z",
     "updatedAt": "2025-06-16T10:30:00Z"
   }

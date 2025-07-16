@@ -1,0 +1,32 @@
+[
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440500",
+    "publicId": "MILE-01",
+    "projectId": "22222222-2222-2222-2222-222222222221",
+    "title": "Alpha Release",
+    "description": "First internal release with core features",
+    "icon": "🎯",
+    "createdAt": "2025-01-01T00:00:00Z",
+    "updatedAt": "2025-01-01T00:00:00Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440501",
+    "publicId": "MILE-02",
+    "projectId": "22222222-2222-2222-2222-222222222221",
+    "title": "Beta Release",
+    "description": "Public beta with expanded feature set",
+    "icon": "🚀",
+    "createdAt": "2025-01-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440502",
+    "publicId": "MILE-01",
+    "projectId": "22222222-2222-2222-2222-222222222222",
+    "title": "Planning Complete",
+    "description": "All teams have submitted their Q1 objectives",
+    "icon": "✅",
+    "createdAt": "2024-12-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z"
+  }
+]

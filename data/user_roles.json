@@ -1,0 +1,72 @@
+[
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440600",
+    "publicId": "ROLE-SUPER-ADMIN",
+    "name": "super_admin",
+    "displayName": "Super Administrator",
+    "description": "Full system access across all workspaces",
+    "permissions": ["*"],
+    "workspaceId": null,
+    "isSystem": true,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440601",
+    "publicId": "ROLE-BETA-TESTER",
+    "name": "beta_tester",
+    "displayName": "Beta Tester",
+    "description": "Access to beta features and experimental functionality",
+    "permissions": ["features.beta.*"],
+    "workspaceId": null,
+    "isSystem": true,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440602",
+    "publicId": "ROLE-SUPPORT",
+    "name": "support_staff",
+    "displayName": "Support Staff",
+    "description": "Access to support tools and user assistance features",
+    "permissions": ["support.*", "users.view", "issues.view"],
+    "workspaceId": null,
+    "isSystem": true,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440603",
+    "publicId": "ROLE-DEVELOPER",
+    "name": "developer",
+    "displayName": "Developer",
+    "description": "Access to API and development tools",
+    "permissions": ["api.*", "dev_tools.*"],
+    "workspaceId": null,
+    "isSystem": true,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440604",
+    "publicId": "ROLE-PROJECT-MANAGER",
+    "name": "project_manager",
+    "displayName": "Project Manager",
+    "description": "Can manage projects and milestones in the workspace",
+    "permissions": [
+      "projects.*",
+      "milestones.*",
+      "issues.create",
+      "issues.update"
+    ],
+    "workspaceId": "00000000-0000-0000-0000-000000000001",
+    "isSystem": false,
+    "isActive": true,
+    "createdAt": "2024-02-01T00:00:00Z",
+    "updatedAt": "2024-02-01T00:00:00Z"
+  }
+]

@@ -1,38 +1,38 @@
 [
   {
     "userId": "user-1",
-    "commentId": "comment-1",
-    "reactionId": "reaction-1",
+    "commentId": "550e8400-e29b-41d4-a716-446655440100",
+    "reactionId": "550e8400-e29b-41d4-a716-446655440200",
     "reactedAt": "2025-07-03T10:15:00Z"
   },
   {
     "userId": "user-2",
-    "commentId": "comment-1",
-    "reactionId": "reaction-5",
+    "commentId": "550e8400-e29b-41d4-a716-446655440100",
+    "reactionId": "550e8400-e29b-41d4-a716-446655440204",
     "reactedAt": "2025-07-03T11:00:00Z"
   },
   {
     "userId": "user-4",
-    "commentId": "comment-2",
-    "reactionId": "reaction-3",
+    "commentId": "550e8400-e29b-41d4-a716-446655440101",
+    "reactionId": "550e8400-e29b-41d4-a716-446655440202",
     "reactedAt": "2025-07-10T14:30:00Z"
   },
   {
     "userId": "user-5",
-    "commentId": "comment-2",
-    "reactionId": "reaction-5",
+    "commentId": "550e8400-e29b-41d4-a716-446655440101",
+    "reactionId": "550e8400-e29b-41d4-a716-446655440204",
     "reactedAt": "2025-07-10T14:31:00Z"
   },
   {
     "userId": "user-1",
-    "commentId": "comment-2",
-    "reactionId": "reaction-5",
+    "commentId": "550e8400-e29b-41d4-a716-446655440101",
+    "reactionId": "550e8400-e29b-41d4-a716-446655440204",
     "reactedAt": "2025-07-10T14:32:00Z"
   },
   {
     "userId": "user-3",
-    "commentId": "comment-3",
-    "reactionId": "reaction-6",
+    "commentId": "550e8400-e29b-41d4-a716-446655440102",
+    "reactionId": "550e8400-e29b-41d4-a716-446655440205",
     "reactedAt": "2025-07-10T15:00:00Z"
   }
 ]

@@ -1,22 +1,22 @@
 [
   {
     "userId": "user-4",
-    "commentId": "comment-1",
+    "commentId": "550e8400-e29b-41d4-a716-446655440100",
     "subscribedAt": "2025-07-03T10:00:00Z"
   },
   {
     "userId": "user-5",
-    "commentId": "comment-1",
+    "commentId": "550e8400-e29b-41d4-a716-446655440100",
     "subscribedAt": "2025-07-10T14:29:00Z"
   },
   {
     "userId": "user-1",
-    "commentId": "comment-1",
+    "commentId": "550e8400-e29b-41d4-a716-446655440100",
     "subscribedAt": "2025-07-03T10:30:00Z"
   },
   {
     "userId": "user-2",
-    "commentId": "comment-3",
+    "commentId": "550e8400-e29b-41d4-a716-446655440102",
     "subscribedAt": "2025-07-10T14:30:00Z"
   }
 ]
