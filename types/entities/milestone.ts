@@ -16,6 +16,7 @@ export interface Milestone {
     canceled: number;
     duplicate: number;
   };
+  progressPercentage?: number; // Computed from milestone_stats view
 
   createdAt: Date;
   updatedAt: Date;

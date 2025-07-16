@@ -1,3 +1,5 @@
+import { UserRoleAssignment } from "./userRoleAssignment";
+
 export interface User {
   id: string; // VARCHAR(50) - Kept for OAuth provider compatibility (Not UUID)
   username: string;
@@ -7,7 +9,9 @@ export interface User {
   lastName?: string;
   isOnline?: boolean;
   currentWorkspaceId?: string; // Last active workspace
-  roles?: string[]; // Array of user roles (PostgreSQL TEXT[] array)
+  // todo : remove the roles array and use the roleAssignments array instead ?
+  roles?: string[]; // Legacy - Array of role names (consider deprecating)
+  roleAssignments?: UserRoleAssignment[]; // New role system (populated via joins)
   createdAt: Date;
   updatedAt: Date;
 }
