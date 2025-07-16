@@ -1,5 +1,3 @@
--- db/schema/015_create_indexes.sql
-
 -- Issues indexes
 CREATE INDEX IF NOT EXISTS idx_issues_creator ON issues(creator_id);
 CREATE INDEX IF NOT EXISTS idx_issues_assignee ON issues(assignee_id);
@@ -8,8 +6,8 @@ CREATE INDEX IF NOT EXISTS idx_issues_parent_comment ON issues(parent_comment_id
 CREATE INDEX IF NOT EXISTS idx_issues_status ON issues(status);
 CREATE INDEX IF NOT EXISTS idx_issues_priority ON issues(priority);
 CREATE INDEX IF NOT EXISTS idx_issues_created_at ON issues(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_issues_due_date ON issues(due_date) WHERE due_date IS NOT NULL;
 
--- ADD THESE NEW MILESTONE-RELATED INDEXES:
 -- Milestone indexes
 CREATE INDEX IF NOT EXISTS idx_issues_milestone ON issues(milestone_id);
 CREATE INDEX IF NOT EXISTS idx_issues_status_milestone ON issues(milestone_id, status);  -- For counting by status
@@ -54,3 +52,12 @@ CREATE INDEX IF NOT EXISTS idx_links_created_at ON links(created_at DESC);
 -- Related issues indexes
 CREATE INDEX IF NOT EXISTS idx_issue_related_issues_issue ON issue_related_issues(issue_id);
 CREATE INDEX IF NOT EXISTS idx_issue_related_issues_related ON issue_related_issues(related_issue_id);
+
+-- Projects indexes
+CREATE INDEX IF NOT EXISTS idx_projects_status ON projects(status);
+CREATE INDEX IF NOT EXISTS idx_projects_priority ON projects(priority);
+
+-- User role assignments indexes
+CREATE INDEX IF NOT EXISTS idx_user_role_assignments_user_role ON user_role_assignments(user_id, role_id);
+CREATE INDEX IF NOT EXISTS idx_user_role_assignments_active ON user_role_assignments(expires_at) 
+WHERE expires_at IS NULL OR expires_at > NOW();

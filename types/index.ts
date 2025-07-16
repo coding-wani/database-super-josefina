@@ -23,7 +23,10 @@ export type { WorkspaceRole } from "./enums/workspaceRole";
 export type { TeamMembership } from "./relationships/teamMembership";
 export type { WorkspaceMembership } from "./relationships/workspaceMembership";
 
-// API Response Types (if you want to export them)
+// API Response Types
 export type { UserDashboardResponse } from "./api/userDashboardResponse";
 export type { WorkspaceMembershipWithDetails } from "./api/workspaceMembershipWithDetails";
 export type { TeamMembershipWithDetails } from "./api/teamMembershipWithDetails";
+export type { IssueWithDetails } from "./api/issueWithDetails";
+export type { ProjectOverview } from "./api/projectOverview";
+export type { WorkspaceAnalytics } from "./api/workspaceAnalytics";
