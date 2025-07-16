@@ -1,5 +1,5 @@
-import { Team } from "../team";
-import { TeamMembership } from "../teamMembership";
+import { Team } from "../entities/team";
+import { TeamMembership } from "../relationships/teamMembership";
 
 // ===== API RESPONSE TYPE (Composed from DB models) =====
 // These are NOT stored in the database, they're just TypeScript types

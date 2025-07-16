@@ -1,6 +1,6 @@
-import { WorkspaceMembership } from "../workspaceMembership";
-import { Workspace } from "../workspace";
-import { User } from "../user";
+import { WorkspaceMembership } from "../relationships/workspaceMembership";
+import { Workspace } from "../entities/workspace";
+import { User } from "../entities/user";
 
 // ===== API RESPONSE TYPE (Composed from DB models) =====
 // These are NOT stored in the database, they're just TypeScript types
