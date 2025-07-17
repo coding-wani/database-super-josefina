@@ -15,12 +15,7 @@ export interface Project {
   leadId?: string; // Foreign key to User who leads the project
   startDate?: Date;
   targetDate?: Date;
-
-  /**
-   * Internal counter used to generate the next milestone's publicId (e.g., "PROJ-01-M3").
-   * This value does NOT determine milestone execution order.
-   */
-  nextMilestoneNumber: number;
+  nextMilestoneNumber: number; // For generating milestone public IDs
 
   // Related data (populated via joins)
   milestones?: Milestone[]; // Array of project milestones
