@@ -56,8 +56,3 @@ CREATE INDEX IF NOT EXISTS idx_issue_related_issues_related ON issue_related_iss
 -- Projects indexes
 CREATE INDEX IF NOT EXISTS idx_projects_status ON projects(status);
 CREATE INDEX IF NOT EXISTS idx_projects_priority ON projects(priority);
-
--- User role assignments indexes
-CREATE INDEX IF NOT EXISTS idx_user_role_assignments_user_role ON user_role_assignments(user_id, role_id);
-CREATE INDEX IF NOT EXISTS idx_user_role_assignments_active ON user_role_assignments(expires_at) 
-WHERE expires_at IS NULL OR expires_at > NOW();
