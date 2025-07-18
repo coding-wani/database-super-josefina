@@ -9,6 +9,7 @@ export type { Reaction } from "./entities/reaction";
 export type { Team } from "./entities/team";
 export type { User } from "./entities/user";
 export type { UserRole } from "./entities/userRole";
+export type { UserRoleAssignment } from "./entities/userRoleAssignment";
 export type { Workspace } from "./entities/workspace";
 
 // Enums
@@ -29,3 +30,7 @@ export type { TeamMembershipWithDetails } from "./api/teamMembershipWithDetails"
 export type { IssueWithDetails } from "./api/issueWithDetails";
 export type { ProjectOverview } from "./api/projectOverview";
 export type { WorkspaceAnalytics } from "./api/workspaceAnalytics";
+export type {
+  UserWithRoles,
+  UserRoleAssignmentDetails,
+} from "./api/userWithRoles";
