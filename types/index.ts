@@ -11,6 +11,7 @@ export type { User } from "./entities/user";
 export type { UserRole } from "./entities/userRole";
 export type { UserRoleAssignment } from "./entities/userRoleAssignment";
 export type { Workspace } from "./entities/workspace";
+export type { AuditLog } from "./entities/auditLog";
 
 // Enums
 export type { Priority } from "./enums/priority";
@@ -19,9 +20,16 @@ export type { Status } from "./enums/status";
 export type { TeamRole } from "./enums/teamRole";
 export type { WorkspaceRole } from "./enums/workspaceRole";
 
-// Relationships
+// Relationships (Junction Tables)
 export type { TeamMembership } from "./relationships/teamMembership";
 export type { WorkspaceMembership } from "./relationships/workspaceMembership";
+export type { IssueSubscription } from "./relationships/issueSubscription";
+export type { IssueFavorite } from "./relationships/issueFavorite";
+export type { CommentReaction } from "./relationships/commentReaction";
+export type { IssueLabelRelation } from "./relationships/issueLabelRelation";
+export type { IssueRelatedIssue } from "./relationships/issueRelatedIssue";
+export type { CommentIssue } from "./relationships/commentIssue";
+export type { CommentSubscription } from "./relationships/commentSubscription";
 
 // API Response Types
 export type { UserDashboardResponse } from "./api/userDashboardResponse";
@@ -34,3 +42,7 @@ export type {
   UserWithRoles,
   UserRoleAssignmentDetails,
 } from "./api/userWithRoles";
+export type {
+  CommentWithReactions,
+  ReactionSummary,
+} from "./api/commentWithReactions";
