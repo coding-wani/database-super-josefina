@@ -4,7 +4,7 @@ export interface User {
   id: string; // VARCHAR(50) - Kept for OAuth provider compatibility (Not UUID)
   username: string;
   email?: string;
-  avatar: string;
+  avatar?: string; // Optional - user might not have uploaded an avatar yet
   firstName?: string;
   lastName?: string;
   isOnline?: boolean;

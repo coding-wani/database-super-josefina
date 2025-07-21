@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS comments (
     description TEXT NOT NULL,
     parent_issue_id UUID NOT NULL REFERENCES issues(id) ON DELETE CASCADE,
     parent_comment_id UUID REFERENCES comments(id),  -- Changed to UUID
-    thread_open BOOLEAN DEFAULT true,
+    thread_open BOOLEAN NOT NULL DEFAULT true,  -- Made NOT NULL with default
     comment_url VARCHAR(500) NOT NULL,  -- Made NOT NULL - required for sharing
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW()
