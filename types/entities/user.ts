@@ -7,7 +7,7 @@ export interface User {
   avatar?: string; // Optional - user might not have uploaded an avatar yet
   firstName?: string;
   lastName?: string;
-  isOnline?: boolean;
+  isOnline: boolean; // Required - always has a value (default: false)
   currentWorkspaceId?: string; // Last active workspace
   roles?: string[]; // Legacy - Simple array of role names (for backward compatibility)
   roleAssignments?: UserRoleAssignment[]; // New role system with full audit trail (populated via joins)
