@@ -5,4 +5,6 @@ export interface IssueLabel {
   name: string;
   color: string; // hex color
   description?: string;
+  createdAt: Date;
+  updatedAt: Date;
 }

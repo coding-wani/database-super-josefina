@@ -10,6 +10,7 @@ export type { Team } from "./entities/team";
 export type { User } from "./entities/user";
 export type { UserRole } from "./entities/userRole";
 export type { UserRoleAssignment } from "./entities/userRoleAssignment";
+export type { UserWithMemberships } from "./entities/userWithMemberships";
 export type { Workspace } from "./entities/workspace";
 
 // Enums
