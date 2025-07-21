@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS users (
     avatar VARCHAR(500),
     first_name VARCHAR(100),
     last_name VARCHAR(100),
-    is_online BOOLEAN DEFAULT false,
+    is_online BOOLEAN NOT NULL DEFAULT false,  -- Made NOT NULL with default
     current_workspace_id UUID REFERENCES workspaces(id),
     roles TEXT[] DEFAULT '{}',  -- Array of role names/IDs
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
