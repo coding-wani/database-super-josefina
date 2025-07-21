@@ -5,7 +5,9 @@
     "teamId": null,
     "name": "Bug",
     "color": "#ef4444",
-    "description": "Something isn't working"
+    "description": "Something isn't working",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440301",
@@ -13,7 +15,9 @@
     "teamId": null,
     "name": "Feature",
     "color": "#8b5cf6",
-    "description": "New feature or request"
+    "description": "New feature or request",
+    "createdAt": "2024-01-02T00:00:00Z",
+    "updatedAt": "2024-01-02T00:00:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440302",
@@ -21,7 +25,9 @@
     "teamId": "11111111-1111-1111-1111-111111111112",
     "name": "ideation",
     "color": "#22c55e",
-    "description": "Design team ideation phase"
+    "description": "Design team ideation phase",
+    "createdAt": "2024-01-03T00:00:00Z",
+    "updatedAt": "2024-01-03T00:00:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440303",
@@ -29,6 +35,8 @@
     "teamId": null,
     "name": "Linear Test",
     "color": "#3b82f6",
-    "description": "Testing Linear features"
+    "description": "Testing Linear features",
+    "createdAt": "2024-01-04T00:00:00Z",
+    "updatedAt": "2024-01-04T00:00:00Z"
   }
 ]

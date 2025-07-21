@@ -2,61 +2,85 @@
   {
     "id": "550e8400-e29b-41d4-a716-446655440200",
     "emoji": "🥰",
-    "name": "heart_eyes"
+    "name": "heart_eyes",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440201",
     "emoji": "😊",
-    "name": "slightly_smiling_face"
+    "name": "slightly_smiling_face",
+    "createdAt": "2024-01-01T00:01:00Z",
+    "updatedAt": "2024-01-01T00:01:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440202",
     "emoji": "🤔",
-    "name": "thinking_face"
+    "name": "thinking_face",
+    "createdAt": "2024-01-01T00:02:00Z",
+    "updatedAt": "2024-01-01T00:02:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440203",
     "emoji": "🤐",
-    "name": "face_with_hand_over_mouth"
+    "name": "face_with_hand_over_mouth",
+    "createdAt": "2024-01-01T00:03:00Z",
+    "updatedAt": "2024-01-01T00:03:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440204",
     "emoji": "👍",
-    "name": "thumbs_up"
+    "name": "thumbs_up",
+    "createdAt": "2024-01-01T00:04:00Z",
+    "updatedAt": "2024-01-01T00:04:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440205",
     "emoji": "❤️",
-    "name": "heart"
+    "name": "heart",
+    "createdAt": "2024-01-01T00:05:00Z",
+    "updatedAt": "2024-01-01T00:05:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440206",
     "emoji": "🎉",
-    "name": "party_popper"
+    "name": "party_popper",
+    "createdAt": "2024-01-01T00:06:00Z",
+    "updatedAt": "2024-01-01T00:06:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440207",
     "emoji": "🚀",
-    "name": "rocket"
+    "name": "rocket",
+    "createdAt": "2024-01-01T00:07:00Z",
+    "updatedAt": "2024-01-01T00:07:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440208",
     "emoji": "👎",
-    "name": "thumbs_down"
+    "name": "thumbs_down",
+    "createdAt": "2024-01-01T00:08:00Z",
+    "updatedAt": "2024-01-01T00:08:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440209",
     "emoji": "😄",
-    "name": "smile"
+    "name": "smile",
+    "createdAt": "2024-01-01T00:09:00Z",
+    "updatedAt": "2024-01-01T00:09:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440210",
     "emoji": "😕",
-    "name": "confused"
+    "name": "confused",
+    "createdAt": "2024-01-01T00:10:00Z",
+    "updatedAt": "2024-01-01T00:10:00Z"
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440211",
     "emoji": "👀",
-    "name": "eyes"
+    "name": "eyes",
+    "createdAt": "2024-01-01T00:11:00Z",
+    "updatedAt": "2024-01-01T00:11:00Z"
   }
 ]
