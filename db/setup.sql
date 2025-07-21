@@ -24,5 +24,5 @@
 \i schema/022_enable_rls.sql
 \i schema/023_create_milestone_stats_view.sql
 \i schema/024_create_user_role_assignments.sql
-\i schema/025_create_audit_log.sql
+\i schema/025_create_audit_logs.sql
 \i seeds/001_initial_reactions.sql

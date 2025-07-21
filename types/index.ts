@@ -11,7 +11,6 @@ export type { User } from "./entities/user";
 export type { UserRole } from "./entities/userRole";
 export type { UserRoleAssignment } from "./entities/userRoleAssignment";
 export type { Workspace } from "./entities/workspace";
-export type { AuditLog } from "./entities/auditLog";
 
 // Enums
 export type { Priority } from "./enums/priority";
