@@ -8,7 +8,6 @@
     "lastName": "Doe",
     "isOnline": true,
     "currentWorkspaceId": "00000000-0000-0000-0000-000000000001",
-    "roles": ["super_admin"],
     "createdAt": "2024-01-01T10:00:00Z",
     "updatedAt": "2025-07-10T10:00:00Z"
   },
@@ -21,7 +20,6 @@
     "lastName": "Doe",
     "isOnline": false,
     "currentWorkspaceId": "00000000-0000-0000-0000-000000000001",
-    "roles": ["project_manager"],
     "createdAt": "2024-02-01T10:00:00Z",
     "updatedAt": "2025-07-09T10:00:00Z"
   },
@@ -34,7 +32,6 @@
     "lastName": "Smith",
     "isOnline": true,
     "currentWorkspaceId": "00000000-0000-0000-0000-000000000002",
-    "roles": ["support_staff"],
     "createdAt": "2024-03-01T10:00:00Z",
     "updatedAt": "2025-07-08T10:00:00Z"
   },
@@ -47,7 +44,6 @@
     "lastName": null,
     "isOnline": true,
     "currentWorkspaceId": "00000000-0000-0000-0000-000000000001",
-    "roles": ["beta_tester"],
     "createdAt": "2024-04-01T10:00:00Z",
     "updatedAt": "2025-07-03T10:00:00Z"
   },
@@ -60,7 +56,6 @@
     "lastName": "Doe",
     "isOnline": false,
     "currentWorkspaceId": "00000000-0000-0000-0000-000000000001",
-    "roles": ["developer"],
     "createdAt": "2024-05-01T10:00:00Z",
     "updatedAt": "2025-07-10T14:29:00Z"
   }

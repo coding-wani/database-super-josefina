@@ -1,47 +1,58 @@
+// data/user_role_assignment_events.json
 [
   {
     "id": "550e8400-e29b-41d4-a716-446655440700",
+    "publicId": "ROLE-EVT-001",
     "userId": "user-1",
     "roleId": "550e8400-e29b-41d4-a716-446655440600",
     "workspaceId": null,
+    "action": "assigned",
     "assignedBy": null,
-    "assignedAt": "2024-01-01T00:00:00Z",
+    "createdAt": "2024-01-01T00:00:00Z",
     "expiresAt": null
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440701",
+    "publicId": "ROLE-EVT-002",
     "userId": "user-4",
     "roleId": "550e8400-e29b-41d4-a716-446655440601",
     "workspaceId": null,
+    "action": "assigned",
     "assignedBy": "user-1",
-    "assignedAt": "2024-04-01T00:00:00Z",
+    "createdAt": "2024-04-01T00:00:00Z",
     "expiresAt": null
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440702",
+    "publicId": "ROLE-EVT-003",
     "userId": "user-5",
     "roleId": "550e8400-e29b-41d4-a716-446655440603",
     "workspaceId": null,
+    "action": "assigned",
     "assignedBy": "user-1",
-    "assignedAt": "2024-05-01T00:00:00Z",
+    "createdAt": "2024-05-01T00:00:00Z",
     "expiresAt": null
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440703",
+    "publicId": "ROLE-EVT-004",
     "userId": "user-2",
     "roleId": "550e8400-e29b-41d4-a716-446655440604",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
+    "action": "assigned",
     "assignedBy": "user-1",
-    "assignedAt": "2024-02-01T00:00:00Z",
+    "createdAt": "2024-02-01T00:00:00Z",
     "expiresAt": null
   },
   {
     "id": "550e8400-e29b-41d4-a716-446655440704",
+    "publicId": "ROLE-EVT-005",
     "userId": "user-3",
     "roleId": "550e8400-e29b-41d4-a716-446655440602",
     "workspaceId": null,
+    "action": "assigned",
     "assignedBy": "user-1",
-    "assignedAt": "2024-03-01T00:00:00Z",
+    "createdAt": "2024-03-01T00:00:00Z",
     "expiresAt": "2025-12-31T23:59:59Z"
   }
 ]
