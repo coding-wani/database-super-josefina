@@ -33,9 +33,9 @@
     "id": "550e8400-e29b-41d4-a716-446655440303",
     "workspaceId": "00000000-0000-0000-0000-000000000001",
     "teamId": null,
-    "name": "Linear Test",
+    "name": "Issue Tracking Test",
     "color": "#3b82f6",
-    "description": "Testing Linear features",
+    "description": "Testing Issue Tracking features",
     "createdAt": "2024-01-04T00:00:00Z",
     "updatedAt": "2024-01-04T00:00:00Z"
   }

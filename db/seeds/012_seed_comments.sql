@@ -1,8 +1,8 @@
 -- Seed comments
 INSERT INTO comments (id, workspace_id, team_id, author_id, description, parent_issue_id, parent_comment_id, thread_open, comment_url, created_at, updated_at) VALUES
-    ('550e8400-e29b-41d4-a716-446655440100', '00000000-0000-0000-0000-000000000001', '11111111-1111-1111-1111-111111111111', 'user-4', 'test comment', '550e8400-e29b-41d4-a716-446655440001', NULL, true, 'https://linear.app/team/issue/ISSUE-04#comment-1', '2025-07-03T10:00:00Z', '2025-07-03T10:00:00Z'),
-    ('550e8400-e29b-41d4-a716-446655440101', '00000000-0000-0000-0000-000000000001', '11111111-1111-1111-1111-111111111111', 'user-5', 'this is a comment on another comment, we call it a reply', '550e8400-e29b-41d4-a716-446655440001', '550e8400-e29b-41d4-a716-446655440100', true, 'https://linear.app/team/issue/ISSUE-04#comment-2', '2025-07-10T14:29:00Z', '2025-07-10T14:29:00Z'),
-    ('550e8400-e29b-41d4-a716-446655440102', '00000000-0000-0000-0000-000000000001', '11111111-1111-1111-1111-111111111112', 'user-5', E'test\n\nhihi', '550e8400-e29b-41d4-a716-446655440003', NULL, false, 'https://linear.app/team/issue/ISSUE-03#comment-3', '2025-07-10T14:29:00Z', '2025-07-10T14:29:00Z')
+    ('550e8400-e29b-41d4-a716-446655440100', '00000000-0000-0000-0000-000000000001', '11111111-1111-1111-1111-111111111111', 'user-4', 'test comment', '550e8400-e29b-41d4-a716-446655440001', NULL, true, 'https://issuetracking.app/team/issue/ISSUE-04#comment-1', '2025-07-03T10:00:00Z', '2025-07-03T10:00:00Z'),
+    ('550e8400-e29b-41d4-a716-446655440101', '00000000-0000-0000-0000-000000000001', '11111111-1111-1111-1111-111111111111', 'user-5', 'this is a comment on another comment, we call it a reply', '550e8400-e29b-41d4-a716-446655440001', '550e8400-e29b-41d4-a716-446655440100', true, 'https://issuetracking.app/team/issue/ISSUE-04#comment-2', '2025-07-10T14:29:00Z', '2025-07-10T14:29:00Z'),
+    ('550e8400-e29b-41d4-a716-446655440102', '00000000-0000-0000-0000-000000000001', '11111111-1111-1111-1111-111111111112', 'user-5', E'test\n\nhihi', '550e8400-e29b-41d4-a716-446655440003', NULL, false, 'https://issuetracking.app/team/issue/ISSUE-03#comment-3', '2025-07-10T14:29:00Z', '2025-07-10T14:29:00Z')
 ON CONFLICT (id) DO NOTHING;
 
 -- Seed issues created from comments (must be after comments)
