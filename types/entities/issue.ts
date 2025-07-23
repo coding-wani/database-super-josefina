@@ -26,8 +26,8 @@ export interface Issue {
   favoritedBy?: User[]; // Array of users who favorited this issue (populated via junction table)
   links?: Link[]; // Array of links attached to this issue
   relatedIssues?: Issue[]; // Array of related issues (populated via junction table)
-  dueDate?: Date | null;
-  assigneeId?: string | null; // Foreign key to User who is assigned
+  dueDate?: Date;
+  assigneeId?: string; // Foreign key to User who is assigned
   createdAt: Date;
   updatedAt: Date;
 }
