@@ -15,10 +15,10 @@ CREATE TABLE IF NOT EXISTS issues (
     creator_id VARCHAR(50) NOT NULL REFERENCES users(id),
     parent_issue_id UUID REFERENCES issues(id),
     parent_comment_id UUID, -- Changed to UUID, FK will be added after comments table
-    due_date TIMESTAMP,
+    due_date TIMESTAMPTZ,
     assignee_id VARCHAR(50) REFERENCES users(id),
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     
     -- Constraints
     CONSTRAINT valid_priority CHECK (priority IN ('no-priority', 'urgent', 'high', 'medium', 'low')),

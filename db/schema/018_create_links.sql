@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS links (
     title VARCHAR(500) NOT NULL,
     url TEXT NOT NULL,
     description TEXT,  -- Optional description from meta tags or user input
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 -- Indexes

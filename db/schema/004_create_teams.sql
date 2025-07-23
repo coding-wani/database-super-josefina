@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS teams (
     name VARCHAR(255) NOT NULL,
     icon VARCHAR(50),
     description TEXT,
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     -- Ensure team public_ids are unique within a workspace
     CONSTRAINT unique_team_public_id_per_workspace UNIQUE (workspace_id, public_id)
 );

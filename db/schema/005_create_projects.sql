@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS projects (
     target_date TIMESTAMPTZ,
     -- Add milestone counter for generating public IDs
     next_milestone_number INTEGER NOT NULL DEFAULT 1,
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     
     -- Constraints
     CONSTRAINT valid_project_status CHECK (status IN ('planned', 'started', 'paused', 'completed', 'canceled')),

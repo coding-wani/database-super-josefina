@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS user_roles (
     workspace_id UUID REFERENCES workspaces(id) ON DELETE CASCADE,  -- NULL for global roles
     is_system BOOLEAN DEFAULT false,  -- System roles can't be deleted
     is_active BOOLEAN DEFAULT true,   -- Can be disabled without deletion
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     
     -- Ensure role names are unique within a workspace (or globally if workspace_id is null)
     CONSTRAINT unique_role_name_per_workspace UNIQUE NULLS NOT DISTINCT (workspace_id, name)

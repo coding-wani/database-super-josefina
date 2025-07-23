@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS milestones (
     title VARCHAR(255) NOT NULL,
     description TEXT,
     icon VARCHAR(50),
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     
     -- Ensure milestone public_ids are unique within a project
     CONSTRAINT unique_milestone_public_id_per_project UNIQUE (project_id, public_id)

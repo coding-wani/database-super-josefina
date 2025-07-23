@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS comment_issues (
     comment_id UUID REFERENCES comments(id) ON DELETE CASCADE,
     issue_id UUID REFERENCES issues(id) ON DELETE CASCADE,
     is_sub_issue BOOLEAN DEFAULT false,
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     PRIMARY KEY (comment_id, issue_id)
 );
 

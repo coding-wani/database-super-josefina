@@ -3,7 +3,7 @@
 CREATE TABLE IF NOT EXISTS issue_related_issues (
     issue_id UUID REFERENCES issues(id) ON DELETE CASCADE,
     related_issue_id UUID REFERENCES issues(id) ON DELETE CASCADE,
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     PRIMARY KEY (issue_id, related_issue_id),
     -- Ensure an issue cannot be related to itself
     CONSTRAINT no_self_relation CHECK (issue_id != related_issue_id)

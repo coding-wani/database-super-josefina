@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS issue_labels (
     name VARCHAR(100) NOT NULL,
     color VARCHAR(7) NOT NULL CHECK (color ~ '^#[0-9A-Fa-f]{6}$'),
     description TEXT,
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     -- Ensure label names are unique within a workspace
     CONSTRAINT unique_label_name_per_workspace UNIQUE (workspace_id, name)
 );

@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS users (
     is_online BOOLEAN NOT NULL DEFAULT false,  -- Made NOT NULL with default
     current_workspace_id UUID REFERENCES workspaces(id),
     roles TEXT[] DEFAULT '{}',  -- Array of role names/IDs
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 CREATE TRIGGER update_users_updated_at BEFORE UPDATE

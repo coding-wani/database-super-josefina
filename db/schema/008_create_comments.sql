@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS comments (
     parent_comment_id UUID REFERENCES comments(id),  -- Changed to UUID
     thread_open BOOLEAN NOT NULL DEFAULT true,  -- Made NOT NULL with default
     comment_url VARCHAR(500) NOT NULL,  -- Made NOT NULL - required for sharing
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 -- Add foreign key constraint to issues table for parent_comment_id

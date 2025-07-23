@@ -7,8 +7,8 @@ CREATE TABLE IF NOT EXISTS user_role_assignment_events (
     workspace_id UUID REFERENCES workspaces(id) ON DELETE CASCADE,
     action VARCHAR(20) NOT NULL CHECK (action IN ('assigned', 'removed', 'expired')),
     assigned_by VARCHAR(50) REFERENCES users(id),
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    expires_at TIMESTAMP,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    expires_at TIMESTAMPTZ,
     
     -- Note: No unique constraint - we want multiple events for the same user/role
     -- Ensure workspace matches if assigning workspace-specific role
