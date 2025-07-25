@@ -28,6 +28,7 @@ export interface Issue {
   relatedIssues?: Issue[]; // Array of related issues (populated via junction table)
   dueDate?: Date;
   assigneeId?: string; // Foreign key to User who is assigned
+  estimation?: number; // 1-6, only for issues in teams with estimation enabled
   createdAt: Date;
   updatedAt: Date;
 }

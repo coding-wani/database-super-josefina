@@ -19,6 +19,7 @@ export type { ProjectStatus } from "./enums/projectStatus";
 export type { Status } from "./enums/status";
 export type { TeamRole } from "./enums/teamRole";
 export type { WorkspaceRole } from "./enums/workspaceRole";
+export type { EstimationType } from "./enums/estimationType";
 
 // Relationships (Junction Tables)
 export type { TeamMembership } from "./relationships/teamMembership";

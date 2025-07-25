@@ -5,10 +5,18 @@ CREATE TABLE IF NOT EXISTS teams (
     name VARCHAR(255) NOT NULL,
     icon VARCHAR(50),
     description TEXT,
+    -- New estimation fields
+    with_estimation BOOLEAN NOT NULL DEFAULT false,
+    estimation_type VARCHAR(20) DEFAULT 'linear' CHECK (estimation_type IN ('exponential', 'fibonacci', 'linear', 'tshirt', 'bouldering')),
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     -- Ensure team public_ids are unique within a workspace
-    CONSTRAINT unique_team_public_id_per_workspace UNIQUE (workspace_id, public_id)
+    CONSTRAINT unique_team_public_id_per_workspace UNIQUE (workspace_id, public_id),
+    -- Ensure estimation_type is only set when with_estimation is true
+    CONSTRAINT estimation_type_requires_with_estimation CHECK (
+        (with_estimation = false AND estimation_type IS NULL) OR
+        (with_estimation = true AND estimation_type IS NOT NULL)
+    )
 );
 
 CREATE INDEX idx_teams_workspace ON teams(workspace_id);

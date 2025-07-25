@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS issues (
     parent_comment_id UUID, -- Changed to UUID, FK will be added after comments table
     due_date TIMESTAMPTZ,
     assignee_id VARCHAR(50) REFERENCES users(id),
+    estimation INTEGER CHECK (estimation >= 1 AND estimation <= 6),
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     
@@ -33,6 +34,7 @@ CREATE INDEX idx_issues_workspace ON issues(workspace_id);
 CREATE INDEX idx_issues_team ON issues(team_id);
 CREATE INDEX idx_issues_project ON issues(project_id);
 CREATE INDEX idx_issues_milestone ON issues(milestone_id);
+CREATE INDEX idx_issues_estimation ON issues(estimation) WHERE estimation IS NOT NULL;
 
 CREATE TRIGGER update_issues_updated_at BEFORE UPDATE
     ON issues FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();

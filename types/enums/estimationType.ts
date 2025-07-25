@@ -1,0 +1,1 @@
+export type EstimationType = "exponential" | "fibonacci" | "linear" | "tshirt" | "bouldering";

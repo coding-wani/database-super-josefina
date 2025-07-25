@@ -1,4 +1,19 @@
--- db/schema/024_create_user_role_assignment_events.sql
+-- =====================================================
+-- USER ROLE ASSIGNMENT EVENTS - Event Log Table
+-- =====================================================
+-- IMPORTANT: This is an EVENT LOG TABLE that records the complete history 
+-- of user role assignments, removals, and expirations.
+-- 
+-- Unlike simple junction tables (which would be in /relationships/), this table:
+-- - Tracks ALL historical events, not just current state
+-- - Maintains a complete audit trail of who assigned/removed roles and when
+-- - Records expiration events for temporary role assignments
+-- - Provides data for activity feeds and compliance reporting
+-- 
+-- Each row represents a discrete event that occurred at a specific time,
+-- which is why this is modeled as an entity rather than a relationship.
+-- =====================================================
+
 CREATE TABLE IF NOT EXISTS user_role_assignment_events (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     public_id VARCHAR(50) UNIQUE NOT NULL, -- Added public ID like "ROLE-EVT-001"
