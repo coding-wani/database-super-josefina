@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS issues (
     project_id UUID REFERENCES projects(id) ON DELETE SET NULL,
     milestone_id UUID REFERENCES milestones(id) ON DELETE SET NULL,
     priority VARCHAR(20) NOT NULL DEFAULT 'no-priority',
-    status VARCHAR(20) NOT NULL DEFAULT 'backlog',
+    status VARCHAR(20) NOT NULL DEFAULT 'triage',
     title VARCHAR(255) NOT NULL,
     description TEXT,
     creator_id VARCHAR(50) NOT NULL REFERENCES users(id),
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS issues (
     
     -- Constraints
     CONSTRAINT valid_priority CHECK (priority IN ('no-priority', 'urgent', 'high', 'medium', 'low')),
-    CONSTRAINT valid_status CHECK (status IN ('backlog', 'todo', 'in-progress', 'done', 'canceled', 'duplicate')),
+    CONSTRAINT valid_status CHECK (status IN ('triage', 'backlog', 'todo', 'planning', 'in-progress', 'in-review', 'done', 'commit', 'canceled', 'decline', 'duplicate')),
     -- Ensure milestone can only be set if issue belongs to a project
     CONSTRAINT milestone_requires_project CHECK (
         milestone_id IS NULL OR project_id IS NOT NULL

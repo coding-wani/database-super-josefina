@@ -75,14 +75,21 @@ UPDATE milestones
 SET title = $1, description = $2, icon = $3, updated_at = NOW()
 WHERE id = $4;
 
--- Get milestone progress (simple count)
+-- Get milestone progress (updated with all statuses)
 -- Usage: Replace $1 with milestone ID
 SELECT 
     COUNT(*) as total_issues,
-    COUNT(CASE WHEN status = 'done' THEN 1 END) as completed_issues,
-    COUNT(CASE WHEN status = 'in-progress' THEN 1 END) as in_progress_issues,
+    COUNT(CASE WHEN status = 'triage' THEN 1 END) as triage_issues,
+    COUNT(CASE WHEN status = 'backlog' THEN 1 END) as backlog_issues,
     COUNT(CASE WHEN status = 'todo' THEN 1 END) as todo_issues,
-    COUNT(CASE WHEN status = 'backlog' THEN 1 END) as backlog_issues
+    COUNT(CASE WHEN status = 'planning' THEN 1 END) as planning_issues,
+    COUNT(CASE WHEN status = 'in-progress' THEN 1 END) as in_progress_issues,
+    COUNT(CASE WHEN status = 'in-review' THEN 1 END) as in_review_issues,
+    COUNT(CASE WHEN status = 'done' THEN 1 END) as done_issues,
+    COUNT(CASE WHEN status = 'commit' THEN 1 END) as commit_issues,
+    COUNT(CASE WHEN status = 'canceled' THEN 1 END) as canceled_issues,
+    COUNT(CASE WHEN status = 'decline' THEN 1 END) as decline_issues,
+    COUNT(CASE WHEN status = 'duplicate' THEN 1 END) as duplicate_issues
 FROM issues 
 WHERE milestone_id = $1;
 

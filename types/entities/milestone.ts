@@ -9,11 +9,16 @@ export interface Milestone {
   // Computed fields (from database views or aggregations)
   totalIssues?: number;
   issuesByStatus?: {
+    triage: number;
     backlog: number;
     todo: number;
+    planning: number;
     "in-progress": number;
+    "in-review": number;
     done: number;
+    commit: number;
     canceled: number;
+    decline: number;
     duplicate: number;
   };
   progressPercentage?: number; // Computed from milestone_stats view
