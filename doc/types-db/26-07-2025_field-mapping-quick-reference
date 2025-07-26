@@ -1,0 +1,72 @@
+# Field Mapping Quick Reference
+
+## Common Patterns
+
+All entities follow these patterns:
+- `createdAt` ↔ `created_at`
+- `updatedAt` ↔ `updated_at`
+- `[entity]Id` ↔ `[entity]_id` (e.g., `workspaceId` ↔ `workspace_id`)
+
+## Entity-Specific Mappings
+
+### User
+- `firstName` ↔ `first_name`
+- `lastName` ↔ `last_name`
+- `isOnline` ↔ `is_online`
+- `currentWorkspaceId` ↔ `current_workspace_id`
+
+### All Entities with Public IDs
+- `publicId` ↔ `public_id`
+
+### Project
+- `leadId` ↔ `lead_id`
+- `startDate` ↔ `start_date`
+- `targetDate` ↔ `target_date`
+- `nextMilestoneNumber` ↔ `next_milestone_number`
+
+### Issue
+- `creatorId` ↔ `creator_id`
+- `parentIssueId` ↔ `parent_issue_id`
+- `parentCommentId` ↔ `parent_comment_id`
+- `dueDate` ↔ `due_date`
+- `assigneeId` ↔ `assignee_id`
+
+### Comment
+- `authorId` ↔ `author_id`
+- `parentIssueId` ↔ `parent_issue_id`
+- `parentCommentId` ↔ `parent_comment_id`
+- `threadOpen` ↔ `thread_open`
+- `commentUrl` ↔ `comment_url`
+
+### Team
+- `withEstimation` ↔ `with_estimation`
+- `estimationType` ↔ `estimation_type`
+
+### UserRole
+- `displayName` ↔ `display_name`
+- `isSystem` ↔ `is_system`
+- `isActive` ↔ `is_active`
+
+### Membership Tables
+- `userId` ↔ `user_id`
+- `joinedAt` ↔ `joined_at`
+- `invitedBy` ↔ `invited_by`
+
+### Subscription/Favorite Tables
+- `subscribedAt` ↔ `subscribed_at`
+- `favoritedAt` ↔ `favorited_at`
+- `reactedAt` ↔ `reacted_at`
+
+### Related Issues
+- `relatedIssueId` ↔ `related_issue_id`
+- `isSubIssue` ↔ `is_sub_issue`
+
+## Quick Conversion
+
+```javascript
+// camelCase to snake_case
+const toSnake = (str) => str.replace(/([A-Z])/g, '_$1').toLowerCase();
+
+// snake_case to camelCase  
+const toCamel = (str) => str.replace(/_([a-z])/g, (_, c) => c.toUpperCase());
+```

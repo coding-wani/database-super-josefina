@@ -1,0 +1,127 @@
+# Migration Guide
+
+## Database Setup
+
+### 1. Create Database
+```bash
+createdb issue_tracker
+```
+
+### 2. Run Schema Files
+```bash
+cd db
+psql -U postgres -d issue_tracker -f setup.sql
+```
+
+This will create:
+- All tables with proper constraints
+- Indexes for performance
+- Triggers for automatic timestamps
+- Views for analytics
+- Initial seed data (reactions)
+
+### 3. Load Test Data (Optional)
+
+If you want to load the test data from the JSON files:
+
+```javascript
+// Example script to load data
+const fs = require('fs');
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  database: 'issue_tracker',
+  user: 'postgres',
+  // ... other config
+});
+
+// Helper to convert camelCase to snake_case
+function toSnakeCase(obj) {
+  const result = {};
+  for (const [key, value] of Object.entries(obj)) {
+    const snakeKey = key.replace(/([A-Z])/g, '_$1').toLowerCase();
+    result[snakeKey] = value;
+  }
+  return result;
+}
+
+// Load workspaces
+async function loadWorkspaces() {
+  const data = JSON.parse(fs.readFileSync('data/workspaces.json'));
+  
+  for (const workspace of data) {
+    const sqlData = toSnakeCase(workspace);
+    await pool.query(
+      `INSERT INTO workspaces (id, public_id, name, icon, description, created_at, updated_at)
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
+       ON CONFLICT (id) DO NOTHING`,
+      [sqlData.id, sqlData.public_id, sqlData.name, sqlData.icon, 
+       sqlData.description, sqlData.created_at, sqlData.updated_at]
+    );
+  }
+}
+
+// Similar functions for other entities...
+```
+
+## Environment Setup
+
+### Required Environment Variables
+```env
+DATABASE_URL=postgresql://user:password@localhost:5432/issue_tracker
+NODE_ENV=development
+```
+
+### TypeScript Configuration
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["node"]
+  }
+}
+```
+
+## Common Tasks
+
+### Adding a New Issue Status
+1. Update `types/enums/status.ts`
+2. Update the CHECK constraint in `db/schema/007_create_issues.sql`
+3. Update the milestone stats view in `db/schema/023_create_milestone_stats_view.sql`
+4. Update any queries that count by status
+
+### Adding a New Entity
+1. Create TypeScript type in `types/entities/`
+2. Create SQL table in `db/schema/`
+3. Export from `types/index.ts`
+4. Create CRUD queries in `db/queries/`
+5. Add test data in `data/`
+
+### Modifying Relationships
+1. Update both sides of the relationship
+2. If bidirectional, ensure triggers are updated
+3. Update any affected API response types
+4. Test with sample data
+
+## Troubleshooting
+
+### Common Issues
+
+**UUID Generation**
+- PostgreSQL uses `gen_random_uuid()` which requires the `pgcrypto` extension
+- The schema files handle this automatically
+
+**Timestamp Timezones**
+- All timestamps use `TIMESTAMPTZ` (with timezone)
+- Always store/retrieve in UTC
+- Convert to user's timezone in the application layer
+
+**Foreign Key Violations**
+- Load data in order: workspaces → users → teams → projects → issues → comments
+- The `ON CONFLICT DO NOTHING` clauses help with re-runs
+
+**Field Name Mismatches**
+- Remember: SQL uses snake_case, TypeScript uses camelCase
+- Use the provided conversion functions
