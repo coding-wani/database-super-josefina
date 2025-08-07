@@ -1,4 +1,4 @@
--- Note: Comments table must be created before this due to circular reference
+-- Note: Comments table must be created before this due to parent_comment_id in comments table
 
 CREATE TABLE IF NOT EXISTS issues (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
