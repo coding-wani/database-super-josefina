@@ -33,6 +33,13 @@ export interface ProjectOverview {
       | "milestone_completed";
     timestamp: Date;
     userId: string;
-    details: any;
+    details: {
+      issueId: string;
+      issueTitle: string;
+      projectName: string;
+      assignee: string;
+      createdAt: string;
+      priority: string;
+    };
   }>;
 }

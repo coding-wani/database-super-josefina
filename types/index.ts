@@ -20,6 +20,7 @@ export type { Status } from "./enums/status";
 export type { TeamRole } from "./enums/teamRole";
 export type { WorkspaceRole } from "./enums/workspaceRole";
 export type { EstimationType } from "./enums/estimationType";
+export type { MarkerColor } from "./enums/markerColor";
 
 // Relationships (Junction Tables)
 export type { TeamMembership } from "./relationships/teamMembership";
