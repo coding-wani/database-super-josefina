@@ -1,12 +1,13 @@
 import { Priority } from "../enums/priority";
 import { Status } from "../enums/status";
+import { IssueState } from "../enums/issueState";
 import { IssueLabel } from "./issueLabel";
 import { User } from "./user";
 import { Link } from "./link";
 
 export interface Issue {
   id: string; // PostgreSQL UUID (internal)
-  publicId: string; // User-facing ID like "ISSUE-09" or "BEST-40"
+  publicId: string; // User-facing ID like "ISSUE-09" or "DRAFT" for unpublished
 
   // Multi-tenant fields
   workspaceId: string; // Foreign key to Workspace (always required)
@@ -16,11 +17,11 @@ export interface Issue {
 
   priority: Priority;
   status: Status;
+  issueState: IssueState; // Draft or Published state
   title: string;
   description?: string; // Markdown content
   creatorId: string; // Foreign key to User who created the issue
   parentIssueId?: string; // UUID of parent Issue (when this is a sub-issue)
-  parentCommentId?: string; // UUID of parent Comment (when created from a comment)
   labels?: IssueLabel[]; // Array of labels (populated via junction table)
   subscribers?: User[]; // Array of subscribed users (populated via junction table)
   favoritedBy?: User[]; // Array of users who favorited this issue (populated via junction table)

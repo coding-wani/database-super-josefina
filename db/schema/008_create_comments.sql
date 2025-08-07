@@ -12,14 +12,12 @@ CREATE TABLE IF NOT EXISTS comments (
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- Add foreign key constraint to issues table for parent_comment_id
-ALTER TABLE issues 
-    ADD CONSTRAINT fk_issues_parent_comment 
-    FOREIGN KEY (parent_comment_id) 
-    REFERENCES comments(id);
-
 CREATE INDEX idx_comments_workspace ON comments(workspace_id);
 CREATE INDEX idx_comments_team ON comments(team_id);
+CREATE INDEX idx_comments_author ON comments(author_id);
+CREATE INDEX idx_comments_parent_issue ON comments(parent_issue_id);
+CREATE INDEX idx_comments_parent_comment ON comments(parent_comment_id);
+CREATE INDEX idx_comments_created_at ON comments(created_at DESC);
 
 CREATE TRIGGER update_comments_updated_at BEFORE UPDATE
     ON comments FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();

@@ -1,12 +1,7 @@
 -- Seed comments
+-- Comments reference published issues (ISSUE-04 and ISSUE-03)
 INSERT INTO comments (id, workspace_id, team_id, author_id, description, parent_issue_id, parent_comment_id, thread_open, comment_url, created_at, updated_at) VALUES
     ('550e8400-e29b-41d4-a716-446655440100', '00000000-0000-0000-0000-000000000001', '11111111-1111-1111-1111-111111111111', 'user-4', 'test comment', '550e8400-e29b-41d4-a716-446655440001', NULL, true, 'https://issuetracking.app/team/issue/ISSUE-04#comment-1', '2025-07-03T10:00:00Z', '2025-07-03T10:00:00Z'),
     ('550e8400-e29b-41d4-a716-446655440101', '00000000-0000-0000-0000-000000000001', '11111111-1111-1111-1111-111111111111', 'user-5', 'this is a comment on another comment, we call it a reply', '550e8400-e29b-41d4-a716-446655440001', '550e8400-e29b-41d4-a716-446655440100', true, 'https://issuetracking.app/team/issue/ISSUE-04#comment-2', '2025-07-10T14:29:00Z', '2025-07-10T14:29:00Z'),
     ('550e8400-e29b-41d4-a716-446655440102', '00000000-0000-0000-0000-000000000001', '11111111-1111-1111-1111-111111111112', 'user-5', E'test\n\nhihi', '550e8400-e29b-41d4-a716-446655440003', NULL, false, 'https://issuetracking.app/team/issue/ISSUE-03#comment-3', '2025-07-10T14:29:00Z', '2025-07-10T14:29:00Z')
-ON CONFLICT (id) DO NOTHING;
-
--- Seed issues created from comments (must be after comments)
-INSERT INTO issues (id, public_id, workspace_id, team_id, project_id, milestone_id, priority, status, title, description, creator_id, parent_issue_id, parent_comment_id, due_date, assignee_id, created_at, updated_at) VALUES
-    ('550e8400-e29b-41d4-a716-446655440011', 'ISSUE-11', '00000000-0000-0000-0000-000000000001', NULL, NULL, NULL, 'no-priority', 'backlog', 'New issue from comment', 'This issue was created from gigi''s comment', 'user-4', NULL, '550e8400-e29b-41d4-a716-446655440100', NULL, NULL, '2025-07-03T10:30:00Z', '2025-07-03T10:30:00Z'),
-    ('550e8400-e29b-41d4-a716-446655440012', 'ISSUE-12', '00000000-0000-0000-0000-000000000001', '11111111-1111-1111-1111-111111111111', '22222222-2222-2222-2222-222222222221', NULL, 'no-priority', 'backlog', 'New sub-issue from comment', 'This sub-issue was created from gigi''s comment', 'user-4', '550e8400-e29b-41d4-a716-446655440001', '550e8400-e29b-41d4-a716-446655440100', NULL, NULL, '2025-07-03T10:35:00Z', '2025-07-03T10:35:00Z')
 ON CONFLICT (id) DO NOTHING;

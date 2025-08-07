@@ -17,6 +17,7 @@ export type { Workspace } from "./entities/workspace";
 export type { Priority } from "./enums/priority";
 export type { ProjectStatus } from "./enums/projectStatus";
 export type { Status } from "./enums/status";
+export type { IssueState } from "./enums/issueState";
 export type { TeamRole } from "./enums/teamRole";
 export type { WorkspaceRole } from "./enums/workspaceRole";
 export type { EstimationType } from "./enums/estimationType";
@@ -30,7 +31,6 @@ export type { IssueFavorite } from "./relationships/issueFavorite";
 export type { CommentReaction } from "./relationships/commentReaction";
 export type { IssueLabelRelation } from "./relationships/issueLabelRelation";
 export type { IssueRelatedIssue } from "./relationships/issueRelatedIssue";
-export type { CommentIssue } from "./relationships/commentIssue";
 export type { CommentSubscription } from "./relationships/commentSubscription";
 
 // API Response Types
