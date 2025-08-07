@@ -24,10 +24,11 @@ CREATE INDEX idx_user_roles_is_active ON user_roles(is_active);
 CREATE TRIGGER update_user_roles_updated_at BEFORE UPDATE
     ON user_roles FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
--- Insert default system roles
-INSERT INTO user_roles (public_id, name, display_name, description, permissions, is_system) VALUES
-    ('ROLE-SUPER-ADMIN', 'super_admin', 'Super Administrator', 'Full system access across all workspaces', '["*"]'::jsonb, true),
-    ('ROLE-BETA-TESTER', 'beta_tester', 'Beta Tester', 'Access to beta features and experimental functionality', '["features.beta.*"]'::jsonb, true),
-    ('ROLE-SUPPORT', 'support_staff', 'Support Staff', 'Access to support tools and user assistance features', '["support.*", "users.view", "issues.view"]'::jsonb, true),
-    ('ROLE-DEVELOPER', 'developer', 'Developer', 'Access to API and development tools', '["api.*", "dev_tools.*"]'::jsonb, true)
+-- Insert default system roles (using predictable UUIDs for system roles)
+-- Using UUID v5 with namespace OID and role name for deterministic IDs
+INSERT INTO user_roles (id, public_id, name, display_name, description, permissions, is_system) VALUES
+    ('550e8400-e29b-41d4-a716-446655440600'::uuid, 'ROLE-SUPER-ADMIN', 'super_admin', 'Super Administrator', 'Full system access across all workspaces', '["*"]'::jsonb, true),
+    ('550e8400-e29b-41d4-a716-446655440601'::uuid, 'ROLE-BETA-TESTER', 'beta_tester', 'Beta Tester', 'Access to beta features and experimental functionality', '["features.beta.*"]'::jsonb, true),
+    ('550e8400-e29b-41d4-a716-446655440602'::uuid, 'ROLE-SUPPORT', 'support_staff', 'Support Staff', 'Access to support tools and user assistance features', '["support.*", "users.view", "issues.view"]'::jsonb, true),
+    ('550e8400-e29b-41d4-a716-446655440603'::uuid, 'ROLE-DEVELOPER', 'developer', 'Developer', 'Access to API and development tools', '["api.*", "dev_tools.*"]'::jsonb, true)
 ON CONFLICT (public_id) DO NOTHING;
