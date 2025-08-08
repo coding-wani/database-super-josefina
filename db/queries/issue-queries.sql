@@ -3,7 +3,7 @@
 -- Get issue by ID with basic info
 -- Usage: Replace $1 with issue ID
 SELECT id, public_id, workspace_id, team_id, project_id, milestone_id,
-       priority, status, issue_state, title, description, creator_id, parent_issue_id, parent_comment_id,
+       priority, status, issue_state, title, description, creator_id, parent_issue_id,
        due_date, assignee_id, created_at, updated_at
 FROM issues 
 WHERE id = $1;
@@ -11,7 +11,7 @@ WHERE id = $1;
 -- Get issue by public ID (for URLs like /issue/ISSUE-123)
 -- Usage: Replace $1 with public ID
 SELECT id, public_id, workspace_id, team_id, project_id, milestone_id,
-       priority, status, issue_state, title, description, creator_id, parent_issue_id, parent_comment_id,
+       priority, status, issue_state, title, description, creator_id, parent_issue_id,
        due_date, assignee_id, created_at, updated_at
 FROM issues 
 WHERE public_id = $1;
@@ -19,7 +19,7 @@ WHERE public_id = $1;
 -- Get all issues in a workspace
 -- Usage: Replace $1 with workspace ID
 SELECT id, public_id, workspace_id, team_id, project_id, milestone_id,
-       priority, status, issue_state, title, description, creator_id, parent_issue_id, parent_comment_id,
+       priority, status, issue_state, title, description, creator_id, parent_issue_id,
        due_date, assignee_id, created_at, updated_at
 FROM issues 
 WHERE workspace_id = $1
@@ -28,7 +28,7 @@ ORDER BY created_at DESC;
 -- Get only published issues in a workspace (for public views)
 -- Usage: Replace $1 with workspace ID
 SELECT id, public_id, workspace_id, team_id, project_id, milestone_id,
-       priority, status, issue_state, title, description, creator_id, parent_issue_id, parent_comment_id,
+       priority, status, issue_state, title, description, creator_id, parent_issue_id,
        due_date, assignee_id, created_at, updated_at
 FROM issues 
 WHERE workspace_id = $1 AND issue_state = 'published'
@@ -37,7 +37,7 @@ ORDER BY created_at DESC;
 -- Get issues assigned to a user
 -- Usage: Replace $1 with user ID
 SELECT id, public_id, workspace_id, team_id, project_id, milestone_id,
-       priority, status, issue_state, title, description, creator_id, parent_issue_id, parent_comment_id,
+       priority, status, issue_state, title, description, creator_id, parent_issue_id,
        due_date, assignee_id, created_at, updated_at
 FROM issues 
 WHERE assignee_id = $1
@@ -46,7 +46,7 @@ ORDER BY created_at DESC;
 -- Get issues created by a user
 -- Usage: Replace $1 with user ID
 SELECT id, public_id, workspace_id, team_id, project_id, milestone_id,
-       priority, status, issue_state, title, description, creator_id, parent_issue_id, parent_comment_id,
+       priority, status, issue_state, title, description, creator_id, parent_issue_id,
        due_date, assignee_id, created_at, updated_at
 FROM issues 
 WHERE creator_id = $1
@@ -55,7 +55,7 @@ ORDER BY created_at DESC;
 -- Get issues in a project
 -- Usage: Replace $1 with project ID
 SELECT id, public_id, workspace_id, team_id, project_id, milestone_id,
-       priority, status, issue_state, title, description, creator_id, parent_issue_id, parent_comment_id,
+       priority, status, issue_state, title, description, creator_id, parent_issue_id,
        due_date, assignee_id, created_at, updated_at
 FROM issues 
 WHERE project_id = $1
@@ -64,7 +64,7 @@ ORDER BY created_at DESC;
 -- Get issues in a milestone
 -- Usage: Replace $1 with milestone ID
 SELECT id, public_id, workspace_id, team_id, project_id, milestone_id,
-       priority, status, issue_state, title, description, creator_id, parent_issue_id, parent_comment_id,
+       priority, status, issue_state, title, description, creator_id, parent_issue_id,
        due_date, assignee_id, created_at, updated_at
 FROM issues 
 WHERE milestone_id = $1
@@ -77,7 +77,7 @@ VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
 RETURNING id, public_id, workspace_id, team_id, project_id, milestone_id, priority, status, issue_state, title, description, creator_id, assignee_id, created_at, updated_at;
 
 -- Update issue
--- Usage: Replace $1-$9 with new values and issue ID
+-- Usage: Replace $1-$8 with new values and issue ID
 UPDATE issues 
 SET title = $1, description = $2, priority = $3, status = $4, issue_state = $5, assignee_id = $6, due_date = $7, updated_at = NOW()
 WHERE id = $8;
