@@ -2,7 +2,11 @@
 
 CREATE TABLE IF NOT EXISTS issues (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    public_id VARCHAR(50) UNIQUE NOT NULL,
+    -- Public ID is the user-facing identifier:
+    -- - "DRAFT" for all draft issues (multiple drafts can share this value)
+    -- - "ISSUE-XX" for published issues (unique sequential numbering)
+    -- The actual unique identifier is always the UUID (id field)
+    public_id VARCHAR(50) NOT NULL,
     workspace_id UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
     team_id UUID REFERENCES teams(id) ON DELETE SET NULL,
     project_id UUID REFERENCES projects(id) ON DELETE SET NULL,
@@ -16,6 +20,8 @@ CREATE TABLE IF NOT EXISTS issues (
     parent_issue_id UUID REFERENCES issues(id),
     due_date TIMESTAMPTZ,
     assignee_id VARCHAR(50) REFERENCES users(id),
+    -- Estimation is only used for teams with estimation enabled
+    -- Uses Fibonacci scale (1,2,3,5,8,13) but we limit to 1-6 for simplicity
     estimation INTEGER CHECK (estimation >= 1 AND estimation <= 6),
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -29,6 +35,10 @@ CREATE TABLE IF NOT EXISTS issues (
         milestone_id IS NULL OR project_id IS NOT NULL
     )
 );
+
+-- Note: We don't add a UNIQUE constraint on public_id because multiple drafts 
+-- can have "DRAFT" as their public_id. The uniqueness is enforced at the 
+-- application level when generating sequential ISSUE-XX numbers for published issues.
 
 CREATE INDEX idx_issues_workspace ON issues(workspace_id);
 CREATE INDEX idx_issues_team ON issues(team_id);

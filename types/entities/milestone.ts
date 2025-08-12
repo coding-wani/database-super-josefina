@@ -6,8 +6,16 @@ export interface Milestone {
   description?: string; // Markdown content
   icon?: string; // Emoji or image URL
 
-  // Computed fields (from database views or aggregations)
+  /**
+   * The following fields are computed from the database view `milestone_stats`
+   * and are not stored directly in the milestones table. They are populated
+   * when querying milestones with their statistics.
+   */
+  
+  // Total number of issues in this milestone (computed from milestone_stats view)
   totalIssues?: number;
+  
+  // Issue count breakdown by status (computed from milestone_stats view)
   issuesByStatus?: {
     triage: number;
     backlog: number;
@@ -21,7 +29,9 @@ export interface Milestone {
     decline: number;
     duplicate: number;
   };
-  progressPercentage?: number; // Computed from milestone_stats view
+  
+  // Progress percentage: (done + commit) / total * 100 (computed from milestone_stats view)
+  progressPercentage?: number;
 
   createdAt: Date;
   updatedAt: Date;

@@ -7,7 +7,17 @@ import { Link } from "./link";
 
 export interface Issue {
   id: string; // PostgreSQL UUID (internal)
-  publicId: string; // User-facing ID like "ISSUE-09" or "DRAFT" for unpublished
+  
+  /**
+   * User-facing ID for the issue.
+   * - For published issues: Sequential ID like "ISSUE-01", "ISSUE-02", etc.
+   * - For draft issues: Always "DRAFT" (multiple drafts can share this ID)
+   * 
+   * Note: The "DRAFT" publicId is a placeholder. Draft issues are identified
+   * by their UUID (id) internally. The publicId only becomes unique and 
+   * shareable once the issue is published and receives its sequential number.
+   */
+  publicId: string;
 
   // Multi-tenant fields
   workspaceId: string; // Foreign key to Workspace (always required)
@@ -29,7 +39,7 @@ export interface Issue {
   relatedIssues?: Issue[]; // Array of related issues (populated via junction table)
   dueDate?: Date;
   assigneeId?: string; // Foreign key to User who is assigned
-  estimation?: number; // 1-6, only for issues in teams with estimation enabled
+  estimation?: number; // 1-6, only for issues in teams with estimation enabled (Fibonacci scale)
   createdAt: Date;
   updatedAt: Date;
 }
