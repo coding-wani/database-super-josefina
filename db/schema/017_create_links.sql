@@ -1,3 +1,36 @@
+-- =====================================================
+-- 017_create_links.sql
+-- TYPE: Extension Table - External References
+-- PURPOSE: Attach external URLs to issues
+-- DEPENDENCIES:
+--   - 002_create_workspaces.sql (workspace_id for RLS)
+--   - 007_create_issues.sql (issue_id reference)
+--   - Function: update_updated_at_column() from 002
+-- 
+-- DESCRIPTION:
+-- Store external links related to issues.
+-- Can extract metadata from URLs.
+-- Used for documentation, references, resources.
+-- 
+-- KEY CONCEPTS:
+-- - One issue can have multiple links
+-- - Title/description from meta tags or manual
+-- - Workspace-scoped for RLS
+-- - Common for research/documentation issues
+-- 
+-- LINK TYPES (by convention):
+-- - Documentation
+-- - Design mockups
+-- - Customer requests
+-- - Bug reports
+-- - Related articles
+-- 
+-- CREATES:
+-- - Table: links
+-- - Indexes: workspace, issue, chronological
+-- - Trigger: auto-update updated_at timestamp
+-- =====================================================
+
 CREATE TABLE IF NOT EXISTS links (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),  -- Changed to UUID
     workspace_id UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,

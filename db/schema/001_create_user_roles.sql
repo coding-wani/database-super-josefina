@@ -24,7 +24,6 @@
 -- - Data: 4 system roles with predictable UUIDs
 -- =====================================================
 
-
 CREATE TABLE IF NOT EXISTS user_roles (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     public_id VARCHAR(50) UNIQUE NOT NULL,

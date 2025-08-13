@@ -1,4 +1,47 @@
 -- =====================================================
+-- 023_create_user_role_assignment_events.sql
+-- TYPE: Event Log Table (NOT a junction table!)
+-- PURPOSE: Audit trail for role assignments/removals
+-- DEPENDENCIES:
+--   - 001_create_user_roles.sql (role_id)
+--   - 002_create_workspaces.sql (workspace_id)
+--   - 003_create_users.sql (user_id, assigned_by)
+-- 
+-- DESCRIPTION:
+-- Complete history of role changes over time.
+-- NOT just current state - full audit trail.
+-- Used for compliance and activity feeds.
+-- 
+-- KEY CONCEPTS:
+-- - Event sourcing pattern
+-- - Immutable log (no updates)
+-- - Tracks WHO did WHAT WHEN
+-- - Supports temporary roles (expires_at)
+-- 
+-- EVENT TYPES:
+-- - assigned: Role granted to user
+-- - removed: Role revoked from user
+-- - expired: Temporary role expired
+-- 
+-- USE CASES:
+-- - Audit trail for compliance
+-- - Activity feed display
+-- - Role history investigation
+-- - Temporary contractor access
+-- 
+-- WHY NOT A JUNCTION TABLE:
+-- - Junction tables show current state
+-- - This shows complete history
+-- - Multiple events for same user/role
+-- - Tracks metadata (who, when, expiry)
+-- 
+-- CREATES:
+-- - Table: user_role_assignment_events
+-- - 6 indexes for various queries
+-- - Constraint: workspace role consistency
+-- =====================================================
+
+-- =====================================================
 -- USER ROLE ASSIGNMENT EVENTS - Event Log Table
 -- =====================================================
 -- IMPORTANT: This is an EVENT LOG TABLE that records the complete history 

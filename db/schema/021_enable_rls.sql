@@ -1,3 +1,37 @@
+-- =====================================================
+-- 021_enable_rls.sql
+-- TYPE: Security Configuration
+-- PURPOSE: Enable Row-Level Security for multi-tenancy
+-- DEPENDENCIES: All tables must exist first
+-- 
+-- DESCRIPTION:
+-- Enables and configures Row-Level Security.
+-- Ensures users only see data they have access to.
+-- Core of multi-tenant data isolation.
+-- 
+-- KEY CONCEPTS:
+-- - RLS policies filter data automatically
+-- - Based on current_setting('app.current_user')
+-- - Workspace membership is foundation
+-- - Team membership adds granularity
+-- 
+-- SECURITY MODEL:
+-- 1. User must be workspace member
+-- 2. Team issues require team membership
+-- 3. Projects inherit from workspace/team
+-- 4. Milestones inherit from projects
+-- 
+-- HOW IT WORKS:
+-- Application sets: SET app.current_user = 'user-123'
+-- Database filters all queries automatically
+-- No data leaks between workspaces
+-- 
+-- CREATES:
+-- - RLS enablement for 8 tables
+-- - Security policies for each table
+-- - Cascading access rules
+-- =====================================================
+
 -- Enable RLS on all tables
 ALTER TABLE workspaces ENABLE ROW LEVEL SECURITY;
 ALTER TABLE teams ENABLE ROW LEVEL SECURITY;

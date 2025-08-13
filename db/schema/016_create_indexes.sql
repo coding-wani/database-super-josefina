@@ -1,3 +1,32 @@
+-- =====================================================
+-- 016_create_indexes.sql
+-- TYPE: Performance Optimization
+-- PURPOSE: Create additional indexes for query performance
+-- DEPENDENCIES: All tables must exist before indexes
+-- 
+-- DESCRIPTION:
+-- Additional indexes beyond those in table definitions.
+-- Optimizes common query patterns and joins.
+-- Includes partial indexes for filtered queries.
+-- 
+-- INDEX STRATEGY:
+-- - Foreign keys: Always index for JOIN performance
+-- - Status/State: For filtering and grouping
+-- - Dates: For chronological queries
+-- - Partial: For NULL checks (WHERE clause)
+-- 
+-- PERFORMANCE IMPACT:
+-- - Speeds up SELECT queries
+-- - Slows down INSERT/UPDATE slightly
+-- - Trade-off: Read vs Write performance
+-- - Monitor with EXPLAIN ANALYZE
+-- 
+-- CREATES:
+-- - 30+ indexes across all tables
+-- - Partial indexes for NULL columns
+-- - Composite indexes for common filters
+-- =====================================================
+
 -- Issues indexes
 CREATE INDEX IF NOT EXISTS idx_issues_creator ON issues(creator_id);
 CREATE INDEX IF NOT EXISTS idx_issues_assignee ON issues(assignee_id);

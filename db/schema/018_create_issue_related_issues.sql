@@ -1,4 +1,38 @@
--- db/schema/014_create_issue_related_issues.sql
+-- =====================================================
+-- 018_create_issue_related_issues.sql
+-- TYPE: Self-Referencing Junction Table
+-- PURPOSE: Link related issues bidirectionally
+-- DEPENDENCIES:
+--   - 007_create_issues.sql (both issue_id fields)
+-- 
+-- DESCRIPTION:
+-- Links issues that are related to each other.
+-- Automatically maintains bidirectional relationships.
+-- Uses trigger for consistency.
+-- 
+-- KEY CONCEPTS:
+-- - Bidirectional: A→B automatically creates B→A
+-- - No self-relations (constraint)
+-- - Used for: duplicates, blocks, relates to
+-- - Trigger maintains consistency
+-- 
+-- RELATIONSHIP TYPES (future enhancement):
+-- - Duplicates
+-- - Blocks/Blocked by
+-- - Relates to
+-- - Parent/Child (different from sub-issues)
+-- 
+-- SPECIAL FEATURES:
+-- - Trigger ensures bidirectionality
+-- - ON CONFLICT DO NOTHING prevents duplicates
+-- - DELETE cascades both directions
+-- 
+-- CREATES:
+-- - Table: issue_related_issues
+-- - Function: maintain_issue_relations()
+-- - Trigger: maintain_bidirectional_relations
+-- - Indexes: both directions
+-- =====================================================
 
 CREATE TABLE IF NOT EXISTS issue_related_issues (
     issue_id UUID REFERENCES issues(id) ON DELETE CASCADE,

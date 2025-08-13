@@ -1,3 +1,34 @@
+-- =====================================================
+-- 019_create_workspace_memberships.sql
+-- TYPE: Membership Table - User-Workspace Association
+-- PURPOSE: Define which users belong to which workspaces
+-- DEPENDENCIES:
+--   - 002_create_workspaces.sql (workspace_id)
+--   - 003_create_users.sql (user_id, invited_by)
+-- 
+-- DESCRIPTION:
+-- Core multi-tenancy table.
+-- Controls workspace access and roles.
+-- Foundation for Row-Level Security.
+-- 
+-- KEY CONCEPTS:
+-- - User can be in multiple workspaces
+-- - Different role per workspace
+-- - invited_by tracks invitation chain
+-- - Basis for RLS policies
+-- 
+-- WORKSPACE ROLES:
+-- - owner: Full control, billing, delete workspace
+-- - admin: Manage users, settings, integrations
+-- - member: Normal access, create/edit content
+-- - guest: Read-only, limited access
+-- 
+-- CREATES:
+-- - Table: workspace_memberships
+-- - Indexes: user and workspace lookups
+-- - Constraints: role validation, unique membership
+-- =====================================================
+
 CREATE TABLE IF NOT EXISTS workspace_memberships (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id VARCHAR(50) REFERENCES users(id) ON DELETE CASCADE,

@@ -1,4 +1,36 @@
--- New file: db/schema/022_create_milestone_stats_view.sql
+-- =====================================================
+-- 022_create_milestone_stats_view.sql
+-- TYPE: Database View - Calculated Statistics
+-- PURPOSE: Aggregate issue statistics per milestone
+-- DEPENDENCIES:
+--   - 006_create_milestones.sql (milestone table)
+--   - 007_create_issues.sql (issue table)
+-- 
+-- DESCRIPTION:
+-- Materialized view for milestone progress tracking.
+-- Counts issues by status for each milestone.
+-- Calculates completion percentage.
+-- 
+-- KEY CONCEPTS:
+-- - Real-time aggregation (not materialized)
+-- - Groups issues by status
+-- - Calculates progress percentage
+-- - Zero-safe division
+-- 
+-- CALCULATED FIELDS:
+-- - total_issues: All issues in milestone
+-- - *_count: Count per status
+-- - progress_percentage: (done+commit)/total
+-- 
+-- PERFORMANCE:
+-- - Consider MATERIALIZED VIEW for large datasets
+-- - Refresh strategy if materialized
+-- - Index on milestone_id in issues table
+-- 
+-- CREATES:
+-- - View: milestone_stats
+-- - Public SELECT permission
+-- =====================================================
 
 CREATE OR REPLACE VIEW milestone_stats AS
 SELECT 
