@@ -1,38 +1,56 @@
-export interface Milestone {
-  id: string; // UUID (internal)
-  publicId: string; // User-facing ID (e.g., "MILE-01")
-  projectId: string; // Foreign key to Project (required - milestone belongs to project)
-  title: string;
-  description?: string; // Markdown content
-  icon?: string; // Emoji or image URL
+// =====================================================
+// types/entities/milestone.ts
+// PURPOSE: Major checkpoints within projects
+// DATABASE TABLE: milestones
+// 
+// SPECIAL NOTES:
+// - Always belongs to a project (never standalone)
+// - Progress calculated from issue statuses
+// - Statistics come from milestone_stats view
+// =====================================================
 
+export interface Milestone {
+  // ===== IDENTIFIERS =====
+  id: string;              // UUID (internal)
+  publicId: string;        // Sequential per project (e.g., "MILE-01")
+  
+  // ===== RELATIONSHIPS =====
+  projectId: string;       // Parent project UUID (required)
+  
+  // ===== DISPLAY FIELDS =====
+  title: string;           // Milestone name
+  description?: string;    // Details (Markdown)
+  icon?: string;           // Emoji (🎯) or image URL
+  
   /**
-   * The following fields are computed from the database view `milestone_stats`
-   * and are not stored directly in the milestones table. They are populated
-   * when querying milestones with their statistics.
+   * ===== COMPUTED STATISTICS =====
+   * The following fields are calculated from the milestone_stats VIEW,
+   * not stored in the milestones table. They're populated when querying
+   * milestones with JOIN milestone_stats.
    */
   
-  // Total number of issues in this milestone (computed from milestone_stats view)
+  // Total issues assigned to this milestone
   totalIssues?: number;
   
-  // Issue count breakdown by status (computed from milestone_stats view)
+  // Issue breakdown by status (from VIEW)
   issuesByStatus?: {
-    triage: number;
-    backlog: number;
-    todo: number;
-    planning: number;
-    "in-progress": number;
-    "in-review": number;
-    done: number;
-    commit: number;
-    canceled: number;
-    decline: number;
-    duplicate: number;
+    triage: number;        // New, unprocessed
+    backlog: number;       // Accepted, queued
+    todo: number;          // Ready to start
+    planning: number;      // Being designed
+    "in-progress": number; // Active work
+    "in-review": number;   // Awaiting review
+    done: number;          // Completed
+    commit: number;        // Merged/deployed
+    canceled: number;      // Won't do
+    decline: number;       // Rejected
+    duplicate: number;     // Duplicate
   };
   
-  // Progress percentage: (done + commit) / total * 100 (computed from milestone_stats view)
+  // Completion percentage: (done + commit) / total * 100
   progressPercentage?: number;
-
+  
+  // ===== TIMESTAMPS =====
   createdAt: Date;
   updatedAt: Date;
 }
