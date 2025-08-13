@@ -1,3 +1,41 @@
+-- =====================================================
+-- 007_create_issues.sql
+-- TYPE: Core Content Table - Primary Work Items
+-- PURPOSE: Central table for all trackable work
+-- DEPENDENCIES:
+--   - 002_create_workspaces.sql (workspace_id required)
+--   - 003_create_users.sql (creator_id, assignee_id)
+--   - 004_create_teams.sql (optional team_id)
+--   - 005_create_projects.sql (optional project_id)
+--   - 006_create_milestones.sql (optional milestone_id)
+--   - Function: update_updated_at_column() from 002
+-- 
+-- DESCRIPTION:
+-- Issues are the core work items (tickets/tasks/bugs).
+-- Support draft/published workflow for collaboration.
+-- Can be hierarchical (sub-issues via parent_issue_id).
+-- 
+-- KEY CONCEPTS:
+-- - Draft state: publicId = "DRAFT", multiple allowed
+-- - Published state: publicId = "ISSUE-XX", unique
+-- - Estimation: Only for teams with estimation enabled
+-- - Hierarchy: Sub-issues inherit team from parent
+-- 
+-- ISSUE STATES:
+-- - draft: Being created, not visible to team
+-- - published: Active and visible to team
+-- 
+-- STATUS WORKFLOW:
+-- triage → backlog → todo → in-progress → done
+-- (plus: planning, in-review, commit, canceled, decline, duplicate)
+-- 
+-- CREATES:
+-- - Table: issues
+-- - 13 indexes for performance
+-- - Trigger: auto-update updated_at timestamp
+-- - Constraints: status, priority, state validation
+-- =====================================================
+
 -- Note: Comments table must be created before this due to parent_comment_id in comments table
 
 CREATE TABLE IF NOT EXISTS issues (

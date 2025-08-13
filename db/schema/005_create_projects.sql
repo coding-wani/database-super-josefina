@@ -1,3 +1,38 @@
+-- =====================================================
+-- 005_create_projects.sql
+-- TYPE: Organization Table - Work Container
+-- PURPOSE: Group related issues and milestones
+-- DEPENDENCIES:
+--   - 002_create_workspaces.sql (projects in workspaces)
+--   - 003_create_users.sql (lead_id references users)
+--   - 004_create_teams.sql (optional team association)
+--   - Function: update_updated_at_column() from 002
+-- 
+-- DESCRIPTION:
+-- Projects organize work across teams or workspace-wide.
+-- Can have milestones for tracking major deliverables.
+-- Tracks status, priority, and timeline.
+-- 
+-- KEY CONCEPTS:
+-- - Can be workspace-level (team_id = NULL) or team-specific
+-- - next_milestone_number: Auto-increment for milestone IDs
+-- - lead_id: Project manager/owner
+-- - Status workflow: planned → started → completed
+-- 
+-- PROJECT STATUSES:
+-- - planned: Not yet started
+-- - started: Active development
+-- - paused: Temporarily on hold
+-- - completed: Successfully finished
+-- - canceled: Abandoned
+-- 
+-- CREATES:
+-- - Table: projects
+-- - Indexes: workspace, team, lead lookups
+-- - Trigger: auto-update updated_at timestamp
+-- - Constraints: valid status and priority values
+-- =====================================================
+
 CREATE TABLE IF NOT EXISTS projects (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     public_id VARCHAR(50) NOT NULL,

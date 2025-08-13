@@ -1,3 +1,36 @@
+-- =====================================================
+-- 004_create_teams.sql
+-- TYPE: Organization Table - Workspace Subdivision
+-- PURPOSE: Group users within workspaces for collaboration
+-- DEPENDENCIES:
+--   - 002_create_workspaces.sql (teams belong to workspaces)
+--   - Function: update_updated_at_column() from 002
+-- 
+-- DESCRIPTION:
+-- Teams organize users within a workspace.
+-- Can have estimation enabled with different scales.
+-- Issues can be team-scoped for access control.
+-- 
+-- KEY CONCEPTS:
+-- - public_id: Unique per workspace (e.g., "ENG", "DESIGN")
+-- - with_estimation: Enables story points on issues
+-- - estimation_type: fibonacci, tshirt, linear, etc.
+-- - Team membership required to see team issues
+-- 
+-- ESTIMATION TYPES:
+-- - exponential: 1, 2, 4, 8, 16...
+-- - fibonacci: 1, 2, 3, 5, 8, 13...
+-- - linear: 1, 2, 3, 4, 5...
+-- - tshirt: XS, S, M, L, XL
+-- - bouldering: V0, V1, V2... (climbing difficulty)
+-- 
+-- CREATES:
+-- - Table: teams
+-- - Index: workspace lookup
+-- - Trigger: auto-update updated_at timestamp
+-- - Constraints: estimation consistency check
+-- =====================================================
+
 CREATE TABLE IF NOT EXISTS teams (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     public_id VARCHAR(50) NOT NULL,

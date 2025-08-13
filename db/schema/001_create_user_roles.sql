@@ -1,3 +1,30 @@
+-- =====================================================
+-- 001_create_user_roles.sql
+-- TYPE: Foundation Table - Permission System
+-- PURPOSE: Define role-based access control (RBAC) system
+-- DEPENDENCIES: 
+--   - 002_create_workspaces.sql (for workspace_id reference)
+--   - Must run BEFORE 002 due to trigger function dependency
+-- 
+-- DESCRIPTION:
+-- Creates the role management system for the application.
+-- Roles can be global (workspace_id = NULL) or workspace-specific.
+-- System roles cannot be deleted, custom roles can be created.
+-- 
+-- KEY CONCEPTS:
+-- - Permissions use dot notation: "projects.*" means all project permissions
+-- - System roles are pre-installed (super_admin, beta_tester, etc.)
+-- - Workspace-specific roles allow custom permissions per workspace
+-- - is_active allows disabling roles without deletion (soft delete)
+-- 
+-- CREATES:
+-- - Table: user_roles
+-- - Indexes: workspace, name, is_active lookups
+-- - Trigger: auto-update updated_at timestamp
+-- - Data: 4 system roles with predictable UUIDs
+-- =====================================================
+
+
 CREATE TABLE IF NOT EXISTS user_roles (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     public_id VARCHAR(50) UNIQUE NOT NULL,

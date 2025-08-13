@@ -1,3 +1,37 @@
+-- =====================================================
+-- 008_create_comments.sql
+-- TYPE: Core Content Table - Communication
+-- PURPOSE: Threaded discussions on issues
+-- DEPENDENCIES:
+--   - 002_create_workspaces.sql (workspace_id for RLS)
+--   - 003_create_users.sql (author_id)
+--   - 004_create_teams.sql (optional team_id)
+--   - 007_create_issues.sql (parent_issue_id required)
+--   - Function: update_updated_at_column() from 002
+-- 
+-- DESCRIPTION:
+-- Comments enable team discussion on issues.
+-- Support threaded replies (parent_comment_id).
+-- Include reactions via junction table.
+-- 
+-- KEY CONCEPTS:
+-- - Threaded: Comments can reply to other comments
+-- - thread_open: Controls if replies are allowed
+-- - comment_url: Deep linking for notifications
+-- - Markdown support in description
+-- 
+-- COMMENT FEATURES:
+-- - Mentions (@username)
+-- - Reactions (emoji via comment_reactions)
+-- - Subscriptions for notifications
+-- - Edit history (via updated_at)
+-- 
+-- CREATES:
+-- - Table: comments
+-- - Indexes: workspace, team, author, issue, thread
+-- - Trigger: auto-update updated_at timestamp
+-- =====================================================
+
 CREATE TABLE IF NOT EXISTS comments (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),  -- Changed to UUID
     workspace_id UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
