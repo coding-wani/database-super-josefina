@@ -1,38 +1,67 @@
+// =====================================================
+// types/entities/comment.ts
+// PURPOSE: Threaded discussions on issues
+// DATABASE TABLE: comments
+// 
+// FEATURES:
+// - Supports nested replies via parent_comment_id
+// - Emoji reactions via junction table
+// - Thread locking (thread_open flag)
+// - Deep linking for notifications
+// =====================================================
+
 import { User } from "./user";
 import { Reaction } from "./reaction";
 
 export interface Comment {
-  id: string; // UUID
-
-  // Multi-tenant fields
-  workspaceId: string; // Foreign key to Workspace (for RLS)
-  teamId?: string; // Inherited from parent issue's team
-
-  authorId: string; // Foreign key to User.id
-  description: string; // The comment content (markdown)
-  parentIssueId: string; // Foreign key to Issue.id
-  parentCommentId?: string; // Foreign key to Comment.id (for replies)
-  threadOpen: boolean;
-  commentUrl: string; // REQUIRED - Deep link URL for sharing comments
-
-  /**
-   * These fields are populated via JOINs with junction tables
-   * and are NOT stored directly in the comments table
-   */
-  subscribers?: User[]; // From comment_subscriptions junction table
+  // ===== IDENTIFIERS =====
+  id: string;              // UUID
+  
+  // ===== MULTI-TENANCY =====
+  workspaceId: string;     // For RLS (Row-Level Security)
+  teamId?: string;         // Inherited from parent issue's team
+  
+  // ===== CONTENT =====
+  authorId: string;        // User who wrote comment (VARCHAR(50))
+  description: string;     // Comment content (Markdown)
+  
+  // ===== RELATIONSHIPS =====
+  parentIssueId: string;   // Issue this comment belongs to
+  parentCommentId?: string; // For replies (creates thread)
+  
+  // ===== FEATURES =====
+  threadOpen: boolean;     // Can replies be added?
+  commentUrl: string;      // Deep link for sharing/notifications
+                          // e.g., "https://app.com/issue/ISSUE-04#comment-1"
   
   /**
-   * Reactions are aggregated from the comment_reactions junction table.
-   * This nested structure is created during API response composition,
-   * not stored in the database. The actual storage uses a simple
-   * junction table linking users, comments, and reactions.
+   * ===== POPULATED VIA JOINS =====
+   * These fields come from junction tables
+   */
+  
+  // Users subscribed to this comment thread
+  subscribers?: User[];    // From comment_subscriptions
+  
+  /**
+   * Aggregated reactions from comment_reactions junction table.
+   * 
+   * STRUCTURE IN API:
+   * reactions: [
+   *   { reaction: {emoji: "👍", name: "thumbs_up"}, 
+   *     users: [user1, user2], 
+   *     count: 2 }
+   * ]
+   * 
+   * STORAGE IN DB:
+   * comment_reactions table with (user_id, comment_id, reaction_id)
    */
   reactions?: Array<{
     reaction: Reaction;
     users: User[];
     count: number;
   }>;
-
+  
+  // ===== TIMESTAMPS =====
   createdAt: Date;
   updatedAt: Date;
 }
