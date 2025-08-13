@@ -1,3 +1,27 @@
+-- =====================================================
+-- 013_seed_user_role_assignment_events.sql
+-- TYPE: Event/Audit Table (NOT a simple junction table)
+-- PURPOSE: Create historical log of role assignments
+-- DEPENDENCIES:
+--   - 003_seed_user_roles.sql (role_id references)
+--   - 004_seed_users.sql (user_id and assigned_by)
+--   - 002_seed_workspaces.sql (workspace_id for scoped roles)
+-- CREATES: 5 role assignment events
+-- 
+-- EVENTS:
+-- - user-1: super_admin (system bootstrap)
+-- - user-4: beta_tester (assigned by user-1)
+-- - user-5: developer (assigned by user-1)
+-- - user-2: project_manager in workspace (assigned by user-1)
+-- - user-3: support_staff with expiration (temp role)
+-- 
+-- NOTES:
+-- - This is an EVENT LOG, not current state
+-- - Tracks who assigned roles and when
+-- - Supports role expiration for temporary assignments
+-- - Uses helper function to resolve role names to IDs
+-- =====================================================
+
 -- Seed user role assignment events
 -- 
 -- IMPORTANT: This is an EVENT LOG TABLE that records the complete history of role assignments.

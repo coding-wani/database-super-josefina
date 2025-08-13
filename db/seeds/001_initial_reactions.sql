@@ -1,3 +1,16 @@
+-- =====================================================
+-- 001_initial_reactions.sql
+-- TYPE: Foundation / Core Entity
+-- PURPOSE: Define all available emoji reactions for comments
+-- DEPENDENCIES: None (first file, no dependencies)
+-- CREATES: 12 reaction types with predictable UUIDs
+-- 
+-- NOTES:
+-- - Uses predictable UUIDs (550e8400-...) for consistent testing
+-- - These reactions can be used on comments via comment_reactions
+-- - ON CONFLICT ensures idempotency (safe to re-run)
+-- =====================================================
+
 -- Use predictable UUIDs for reactions so we can reference them in seed data
 INSERT INTO reactions (id, emoji, name, created_at, updated_at) VALUES
     ('550e8400-e29b-41d4-a716-446655440200'::uuid, '🥰', 'heart_eyes', NOW(), NOW()),

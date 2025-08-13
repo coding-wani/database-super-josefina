@@ -1,3 +1,27 @@
+-- =====================================================
+-- 011_seed_issues.sql
+-- TYPE: Core Content / Primary Entity
+-- PURPOSE: Create issues demonstrating all states and relationships
+-- DEPENDENCIES:
+--   - 002_seed_workspaces.sql (workspace_id required)
+--   - 004_seed_users.sql (creator_id, assignee_id)
+--   - 006_seed_teams.sql (optional team_id)
+--   - 008_seed_projects.sql (optional project_id)
+--   - 009_seed_milestones.sql (optional milestone_id)
+-- CREATES: 14 issues (12 published, 2 drafts)
+-- 
+-- ISSUE BREAKDOWN:
+-- Part 1: Main published issues (ISSUE-01 to ISSUE-04)
+-- Part 2: Sub-issues (ISSUE-05 to ISSUE-10)
+-- Part 3: Draft issues (2 drafts with publicId="DRAFT")
+-- 
+-- NOTES:
+-- - Draft issues share publicId="DRAFT" until published
+-- - Engineering team issues have estimation (1-6)
+-- - Design team issues have no estimation
+-- - Sub-issues inherit team from parent
+-- =====================================================
+
 -- Seed issues (part 1 - main published issues)
 -- All issues with publicId like "ISSUE-XX" are published (that's how they got their publicId)
 -- Issues with comments (ISSUE-04 and ISSUE-03) must be published

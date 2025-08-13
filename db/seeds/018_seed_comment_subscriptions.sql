@@ -1,0 +1,15 @@
+-- =====================================================
+-- 018_seed_comment_subscriptions.sql
+-- TYPE: Relationship / Junction Table
+-- PURPOSE: Track comment thread subscriptions
+-- DEPENDENCIES: Would need comments and users
+-- CREATES: Currently empty (0 records)
+-- 
+-- NOTES:
+-- - Placeholder for future feature
+-- - Would notify users of replies to specific comments
+-- - Different from issue subscriptions (thread-level)
+-- - Currently not implemented in the application
+-- =====================================================
+
+-- Currently empty - placeholder for future comment subscription feature

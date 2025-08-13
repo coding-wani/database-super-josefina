@@ -1,3 +1,23 @@
+-- =====================================================
+-- 019_seed_issue_related_issues.sql
+-- TYPE: Relationship / Junction Table (Bidirectional)
+-- PURPOSE: Link related issues together
+-- DEPENDENCIES:
+--   - 011_seed_issues.sql (both issue_id and related_issue_id)
+-- CREATES: 3 bidirectional relationships (6 total records)
+-- 
+-- RELATIONSHIPS:
+-- - ISSUE-04 <-> ISSUE-03
+-- - ISSUE-02 <-> ISSUE-01
+-- - ISSUE-09 <-> ISSUE-10 (sub-issues related)
+-- 
+-- NOTES:
+-- - Trigger automatically creates reverse relation
+-- - Only insert one direction, trigger handles other
+-- - Useful for tracking duplicate/related work
+-- - Cannot relate issue to itself (constraint)
+-- =====================================================
+
 -- Seed issue related issues
 -- Note: The trigger will automatically create bidirectional relations
 -- So we only insert one direction for each pair

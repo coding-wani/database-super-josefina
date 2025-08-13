@@ -1,3 +1,24 @@
+-- =====================================================
+-- 010_seed_issue_labels.sql
+-- TYPE: Organization Structure / Core Entity
+-- PURPOSE: Create labels for categorizing issues
+-- DEPENDENCIES:
+--   - 002_seed_workspaces.sql (labels are workspace-scoped)
+--   - 006_seed_teams.sql (optional team-specific labels)
+-- CREATES: 4 labels with different scopes
+-- 
+-- LABELS:
+-- - Bug: Workspace-wide (red)
+-- - Feature: Workspace-wide (purple)
+-- - ideation: Design team only (green)
+-- - Issue Tracking Test: Workspace-wide (blue)
+-- 
+-- NOTES:
+-- - Colors must be hex format (#RRGGBB)
+-- - Team-specific labels only visible to team members
+-- - Labels are unique per workspace by name
+-- =====================================================
+
 -- Seed issue labels
 INSERT INTO issue_labels (id, workspace_id, team_id, name, color, description, created_at, updated_at) VALUES
     ('550e8400-e29b-41d4-a716-446655440300', '00000000-0000-0000-0000-000000000001', NULL, 'Bug', '#ef4444', 'Something isn''t working', '2024-01-01T00:00:00Z', '2024-01-01T00:00:00Z'),
