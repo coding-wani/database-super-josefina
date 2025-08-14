@@ -8,7 +8,240 @@ Les types dans ce dossier `/types/api` représentent des **réponses API compos�
 
 ## Types disponibles
 
-### 1. `UserDashboardResponse`
+### Vue d'ensemble des 8 types API
+
+1. **`CommentWithReactions`** - Comments avec réactions groupées
+2. **`IssueWithDetails`** - Issues avec toutes les relations chargées
+3. **`ProjectOverview`** - Vue d'ensemble complète d'un projet
+4. **`TeamMembershipWithDetails`** - Adhésion équipe avec détails
+5. **`UserDashboardResponse`** - Dashboard utilisateur complet
+6. **`UserWithRoles`** - Utilisateur avec informations de rôles
+7. **`WorkspaceAnalytics`** - Analyses et métriques du workspace
+8. **`WorkspaceMembershipWithDetails`** - Adhésion workspace avec détails
+
+---
+
+### 1. `CommentWithReactions`
+
+**Objectif** : Fournir les commentaires avec leurs réactions agrégées pour éviter les requêtes N+1.
+
+#### Cas d'usage
+- Affichage des commentaires sur les issues
+- Threads de discussion avec réactions
+- Éviter les appels API séparés pour chaque réaction
+
+#### Structure
+```typescript
+interface CommentWithReactions {
+  // Hérite de Comment (contenu, auteur, dates...)
+  reactions: ReactionSummary[]; // Réactions groupées par type
+}
+
+interface ReactionSummary {
+  reaction: Reaction;      // Type de réaction (emoji)
+  users: User[];           // Utilisateurs qui ont réagi
+  count: number;           // Nombre total
+}
+```
+
+#### Exemple d'utilisation
+```typescript
+function CommentItem({ comment }: { comment: CommentWithReactions }) {
+  return (
+    <div className="comment">
+      <p>{comment.content}</p>
+      
+      {/* Affichage des réactions */}
+      <div className="reactions">
+        {comment.reactions.map(({ reaction, users, count }) => (
+          <button key={reaction.id} className="reaction-btn">
+            {reaction.emoji} {count}
+            <Tooltip>
+              {users.map(u => u.username).join(', ')}
+            </Tooltip>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+### 2. `IssueWithDetails`
+
+**Objectif** : Charger toutes les données nécessaires pour l'affichage détaillé d'une issue.
+
+#### Cas d'usage
+- Page de détail d'une issue (`/issue/[id]`)
+- Modal d'édition d'issue
+- Sidebar d'issue avec toutes les informations
+
+#### Structure
+```typescript
+interface IssueWithDetails {
+  issue: Issue;                // Issue principale
+  creator: User;               // Créateur
+  assignee?: User;             // Assigné
+  labels: IssueLabel[];        // Étiquettes
+  comments: Comment[];         // Commentaires
+  subscribers: User[];         // Abonnés
+  links: Link[];               // Liens/attachements
+  parentIssue?: Issue;         // Issue parente
+  subIssues?: Issue[];         // Sous-issues
+  relatedIssues?: Issue[];     // Issues liées
+}
+```
+
+#### Exemple d'utilisation
+```typescript
+function IssueDetailPage({ issueId }: { issueId: string }) {
+  const details = await fetchIssueWithDetails(issueId);
+  
+  return (
+    <div className="issue-detail">
+      <IssueHeader 
+        issue={details.issue}
+        creator={details.creator}
+        assignee={details.assignee}
+      />
+      
+      <IssueTags labels={details.labels} />
+      
+      <IssueDescription content={details.issue.description} />
+      
+      <IssueComments comments={details.comments} />
+      
+      <IssueSidebar 
+        subscribers={details.subscribers}
+        links={details.links}
+        parentIssue={details.parentIssue}
+        subIssues={details.subIssues}
+        relatedIssues={details.relatedIssues}
+      />
+    </div>
+  );
+}
+```
+
+---
+
+### 3. `ProjectOverview`
+
+**Objectif** : Dashboard complet d'un projet avec métriques et activité récente.
+
+#### Cas d'usage
+- Dashboard de projet (`/project/[id]`)
+- Vue d'ensemble pour les chefs de projet
+- Métriques de performance et suivi
+
+#### Structure
+```typescript
+interface ProjectOverview {
+  project: Project;            // Projet principal
+  lead?: User;                 // Chef de projet
+  team?: Team;                 // Équipe assignée
+  milestones: Milestone[];     // Jalons
+  members: Array<{
+    user: User;
+    role: string;
+  }>;
+  issueStats: {
+    total: number;
+    byStatus: Record<Status, number>;
+    byPriority: Record<Priority, number>;
+    overdue: number;
+    completionRate: number;
+  };
+  recentActivity: ActivityItem[];
+}
+```
+
+#### Exemple d'utilisation
+```typescript
+function ProjectDashboard({ projectId }: { projectId: string }) {
+  const overview = await fetchProjectOverview(projectId);
+  
+  return (
+    <div className="project-dashboard">
+      <ProjectHeader 
+        project={overview.project}
+        lead={overview.lead}
+        team={overview.team}
+      />
+      
+      <ProjectMetrics stats={overview.issueStats} />
+      
+      <MilestoneProgress milestones={overview.milestones} />
+      
+      <TeamMembers members={overview.members} />
+      
+      <ActivityFeed activities={overview.recentActivity} />
+    </div>
+  );
+}
+```
+
+---
+
+### 4. `UserWithRoles`
+
+**Objectif** : Utilisateur avec informations complètes de rôles pour la gestion des permissions.
+
+#### Cas d'usage
+- Administration des utilisateurs
+- Gestion des permissions
+- Audit des accès et rôles
+
+#### Structure
+```typescript
+interface UserWithRoles {
+  user: User;                          // Données utilisateur
+  roleAssignments: Array<{
+    roleId: string;
+    role: UserRole;                    // Détails du rôle avec permissions
+    workspaceId?: string;              // Scope workspace si applicable
+    assignedBy?: string;
+    assignedByUser?: User;             // Qui a assigné
+    assignedAt: Date;
+    expiresAt?: Date;
+  }>;
+}
+```
+
+---
+
+### 5. `WorkspaceAnalytics`
+
+**Objectif** : Métriques complètes et analytics pour un workspace.
+
+#### Cas d'usage
+- Dashboard administrateur
+- Rapports de performance
+- Métriques d'équipe et utilisateur
+
+#### Structure
+```typescript
+interface WorkspaceAnalytics {
+  workspaceId: string;
+  period: { start: Date; end: Date; };
+  teamStats: TeamPerformanceMetrics[];
+  userStats: UserActivityMetrics[];
+  projectStats: ProjectProgressMetrics[];
+  trends: {
+    issueVelocity: number[];
+    resolutionRate: number[];
+    activeUsers: number[];
+  };
+  topLabels: LabelUsageMetrics[];
+  summary: WorkspaceSummaryMetrics;
+}
+```
+
+---
+
+### 6. `UserDashboardResponse`
 
 **Objectif** : Fournir toutes les données nécessaires au chargement initial de l'application en un seul appel API.
 
@@ -76,7 +309,45 @@ function Sidebar({ dashboard }: { dashboard: UserDashboardResponse }) {
 }
 ```
 
-### 2. `WorkspaceMembershipWithDetails`
+### 7. `TeamMembershipWithDetails`
+
+**Objectif** : Fournir les informations complètes sur l'appartenance à une équipe.
+
+#### Cas d'usage
+- Page d'équipe (`/team/[id]`)
+- Liste des membres d'une équipe
+- Vérification des permissions (seul le lead peut gérer l'équipe)
+
+#### Structure
+```typescript
+interface TeamMembershipWithDetails {
+  membership: TeamMembership;  // Rôle et date d'adhésion
+  team: Team;                  // Informations complètes de l'équipe
+}
+```
+
+#### Exemple d'utilisation
+```typescript
+function TeamHeader({ teamData }: { teamData: TeamMembershipWithDetails }) {
+  const { team, membership } = teamData;
+  
+  return (
+    <div className="team-header">
+      <h1>{team.icon} {team.name}</h1>
+      {membership.role === 'admin' && (
+        <button>Gérer l'équipe</button>
+      )}
+      <span>
+        Vous êtes {membership.role} depuis {formatDate(membership.joinedAt)}
+      </span>
+    </div>
+  );
+}
+```
+
+---
+
+### 8. `WorkspaceMembershipWithDetails`
 
 **Objectif** : Afficher les détails complets d'une adhésion à un workspace, incluant les informations sur qui a invité le membre.
 
@@ -132,62 +403,6 @@ function WorkspaceMembers() {
 }
 ```
 
-### 3. `TeamMembershipWithDetails`
-
-**Objectif** : Fournir les informations complètes sur l'appartenance à une équipe.
-
-#### Cas d'usage
-- Page d'équipe (`/team/[id]`)
-- Liste des membres d'une équipe
-- Vérification des permissions (seul le lead peut gérer l'équipe)
-
-#### Structure
-```typescript
-interface TeamMembershipWithDetails {
-  membership: TeamMembership;
-  team: Team;
-}
-```
-
-#### Exemple d'utilisation
-```typescript
-// Composant : TeamHeader
-function TeamHeader({ teamData }: { teamData: TeamMembershipWithDetails }) {
-  const { team, membership } = teamData;
-  
-  return (
-    <div className="team-header">
-      <h1>
-        {team.icon} {team.name}
-      </h1>
-      {membership.role === 'lead' && (
-        <button>Gérer l'équipe</button> // Seulement visible pour le lead
-      )}
-      <span>
-        Vous êtes {membership.role} depuis {formatDate(membership.joinedAt)}
-      </span>
-    </div>
-  );
-}
-
-// Liste des membres de l'équipe
-function TeamMembersList({ teamId }: { teamId: string }) {
-  const members = await fetchTeamMembers(teamId);
-  
-  return (
-    <div>
-      {members.map(({ membership, team }) => (
-        <MemberCard
-          key={membership.id}
-          role={membership.role}
-          joinedAt={membership.joinedAt}
-          teamName={team.name}
-        />
-      ))}
-    </div>
-  );
-}
-```
 
 ## Avantages de cette approche
 

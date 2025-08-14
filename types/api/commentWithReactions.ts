@@ -1,18 +1,35 @@
+// =====================================================
+// types/api/commentWithReactions.ts
+// PURPOSE: API response type for comments with reactions(NB:1)
+// SOURCE TABLES: comments + comment_reactions + reactions + users
+// 
+// KEY CONCEPTS:
+// - Aggregates comment data with reaction summaries
+// - Groups reactions by type with user lists
+// - Optimized for frontend display
+// - Reduces API calls by pre-computing counts
+//
+// NB:
+// (1) API RESPONSE TYPE (Composed Data)
+// This type combines multiple database entities into
+// a single response object for efficient API responses
+// =====================================================
+
 import { Comment } from "../entities/comment";
 import { Reaction } from "../entities/reaction";
 import { User } from "../entities/user";
 
-// ===== API RESPONSE TYPE (Composed from DB models) =====
-// This type represents a comment with aggregated reaction data
-// The database stores individual reactions in comment_reactions junction table
-// This type is used when returning comments with reaction summaries
-
 export interface ReactionSummary {
-  reaction: Reaction;
-  users: User[];
-  count: number;
+  // ===== REACTION DATA =====
+  reaction: Reaction;      // The emoji/reaction type
+  users: User[];           // Users who reacted with this
+  count: number;           // Total count for this reaction
 }
 
 export interface CommentWithReactions extends Omit<Comment, "reactions"> {
-  reactions: ReactionSummary[];
+  // ===== COMMENT DATA =====
+  // Inherits all Comment fields except 'reactions'
+  
+  // ===== AGGREGATED REACTION DATA =====
+  reactions: ReactionSummary[];  // Grouped reactions with counts
 }

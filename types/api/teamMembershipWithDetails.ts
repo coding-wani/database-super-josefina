@@ -1,11 +1,27 @@
+// =====================================================
+// types/api/teamMembershipWithDetails.ts
+// PURPOSE: API response type for team membership details(NB:1)
+// SOURCE TABLES: team_memberships + teams
+// 
+// KEY CONCEPTS:
+// - Combines membership data with team details
+// - Used for user's team list views
+// - Avoids separate API calls for team info
+// - Displays role within team context
+//
+// NB:
+// (1) API RESPONSE TYPE (Composed Data)
+// This type joins team membership relationships
+// with full team details for display purposes
+// =====================================================
+
 import { Team } from "../entities/team";
 import { TeamMembership } from "../relationships/teamMembership";
 
-// ===== API RESPONSE TYPE (Composed from DB models) =====
-// These are NOT stored in the database, they're just TypeScript types
-// for API responses that JOIN data together
-
 export interface TeamMembershipWithDetails {
-  membership: TeamMembership;
-  team: Team;
+  // ===== MEMBERSHIP DATA =====
+  membership: TeamMembership;  // User's role and join date
+  
+  // ===== TEAM CONTEXT =====
+  team: Team;                  // Full team information
 }
