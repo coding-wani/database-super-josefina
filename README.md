@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains the complete database schema, TypeScript type definitions, and query templates for a modern issue tracking system similar to Linear/Jira. It's designed as a **private repository** separate from the main application to protect database structure and maintain clean separation of concerns.
+This repository contains the complete database schema, TypeScript type definitions, and query templates for a modern issue tracking system. It's designed as a **private repository** separate from the main application to protect database structure and maintain clean separation of concerns.
 
 ## 🏗️ Repository Structure
 
